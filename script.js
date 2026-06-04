@@ -67,6 +67,7 @@ function AddNewBookDiv(newBook){
 //used to clean up the library when you delete a book from it
 function deleteBookFromLibrary(bookID){
   let index = -1;
+  //find index of book you are trying to delete
   for(const _book of myLibrary){
     if(_book.bookId === bookID){
       index = myLibrary.indexOf(_book);
@@ -74,7 +75,7 @@ function deleteBookFromLibrary(bookID){
     }
   }
   if (index > -1) { 
-      myLibrary.splice(index, 1);
+      myLibrary.splice(index, 1); //remove
   }
   console.table(myLibrary);
 }
