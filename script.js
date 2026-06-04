@@ -13,6 +13,7 @@ function Book(title, author, pages, haveRead) {
     this.bookId = crypto.randomUUID();
 }
 
+//Add a book to the library array 
 function addBookToLibrary(title, author, pages, haveRead) {
   // take params, create a book then store it in the array
   let newBook = new Book(title, author, pages, haveRead);
@@ -21,6 +22,7 @@ function addBookToLibrary(title, author, pages, haveRead) {
   AddNewBookDiv(myLibrary[myLibrary.length-1]);
 }
 
+//populate the library with some basic books
 function addInitialBooks(){
   addBookToLibrary("Bone: The Great Cow Race", "Jeff Smith", 132, true);
   addBookToLibrary("Lord of the Flies", "William Golding", 260, true);
@@ -45,8 +47,6 @@ function AddNewBookDiv(newBook){
   newBookDiv.dataset.bookId = `${newBook.bookId}`;
 
 
-
-
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
   deleteButton.addEventListener("click", (e) => {
@@ -54,6 +54,7 @@ function AddNewBookDiv(newBook){
     e.currentTarget.parentElement.dataset.bookId
     if(e.currentTarget.parentElement.dataset.bookId === `${newBook.bookId}`)
     {
+      deleteBookFromLibrary(e.currentTarget.parentElement.dataset.bookId);
       e.currentTarget.parentElement.remove();
     }
   })
@@ -63,6 +64,20 @@ function AddNewBookDiv(newBook){
   container.appendChild(newBookDiv);
 }
 
+//used to clean up the library when you delete a book from it
+function deleteBookFromLibrary(bookID){
+  let index = -1;
+  for(const _book of myLibrary){
+    if(_book.bookId === bookID){
+      index = myLibrary.indexOf(_book);
+      break;
+    }
+  }
+  if (index > -1) { 
+      myLibrary.splice(index, 1);
+  }
+  console.table(myLibrary);
+}
 
 const bookDialog = document.querySelector("#book-dialog");
 const openButton = document.querySelector(".open-dialog-button");
