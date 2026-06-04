@@ -40,7 +40,22 @@ function AddNewBookDiv(newBook){
   // 2. Add content, classes, or IDs
   newBookDiv.textContent = `${newBook.title}`;
   newBookDiv.classList.add("book-div");
+  //reference to book ID on div so you know which one to delete
+  newBookDiv.dataset.bookId = `${newBook.bookId}`;
 
+
+  const deleteButton = document.createElement("button");
+  deleteButton.addEventListener("click", (e) => {
+
+    //target parent of current button being pressed to delete it. 
+    e.currentTarget.parentElement.dataset.bookId
+    if(e.currentTarget.parentElement.dataset.bookId === `${newBook.bookId}`)
+    {
+      console.log(`${newBook.bookId}`)
+      e.currentTarget.parentElement.remove();
+    }
+  })
+  newBookDiv.appendChild(deleteButton);
   // 3. Append it to an existing container (like the body)
   container.appendChild(newBookDiv);
 }
