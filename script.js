@@ -33,20 +33,42 @@ function addInitialBooks(){
 }
 
 
-// myLibrary.forEach(book => {
-//   AddNewBookDiv(book);
-// });
-
 function AddNewBookDiv(newBook){
   // 1. Create the new div element
   const newBookDiv = document.createElement("div");
-  // 2. Add content, classes, or IDs
-  newBookDiv.textContent = `${newBook.title}`;
   newBookDiv.classList.add("book-div");
+
   //reference to book ID on div so you know which one to delete
   newBookDiv.dataset.bookId = `${newBook.bookId}`;
 
+  const _bookTitle = document.createElement("p");
+  _bookTitle.textContent = `${newBook.title}`;
+  _bookTitle.classList.add("book-title");
+  newBookDiv.appendChild(_bookTitle);
 
+  const _bookAuthor = document.createElement("p");
+  _bookAuthor.textContent = `${newBook.author}`;
+  _bookAuthor.classList.add("book-author");
+  newBookDiv.appendChild(_bookAuthor);
+
+  const _bookPages = document.createElement("p");
+  _bookPages.textContent = `${newBook.pages}`;
+  _bookPages.classList.add("book-pages");
+  newBookDiv.appendChild(_bookPages);
+
+  const _haveRead = document.createElement("input");
+  _haveRead.type = 'checkbox';
+  _haveRead.id = `read-${newBook.title}`;
+  _haveRead.checked = newBook.haveRead === true ? true: false;
+  newBookDiv.appendChild(_haveRead);
+
+  const _haveReadLabel = document.createElement("label");
+  _haveReadLabel.textContent = "Have Read";
+  _haveReadLabel.htmlFor = `read-${newBook.title}`
+  newBookDiv.appendChild(_haveReadLabel);
+  
+
+  //Create delete button
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
   deleteButton.addEventListener("click", (e) => {
@@ -91,10 +113,6 @@ openButton.addEventListener("click", () => {
 closeButton.addEventListener("click", () => {
   bookDialog.close();
 });
-// submitButton.addEventListener("click", (event) => {
-//    event.preventDefault(); // We don't want to submit this fake form
-//    bookDialog.close();
-// });
 
 // JavaScript Implementation
 const form = document.querySelector('#book-form');
@@ -116,39 +134,19 @@ form.addEventListener("submit", (event) => {
 
   const bookTitle = formData.get('title-input');
   const bookAuthor = formData.get('author-input');
-  const bookPages = formData.get('pages-input');
-  const haveRead = formData.get('read-input');
+  const bookPages = +formData.get('pages-input'); //plus constructor to convert to a number
+  
+  let readData = formData.get('read-input');
+  let haveRead = false;
+  if(readData === "on"){
+    haveRead = true;
+  }
 
   addBookToLibrary(bookTitle, bookAuthor, bookPages, haveRead);
   console.table(myLibrary);
 
   bookDialog.close();
 });
-
-// const showButton = document.getElementById("showDialog");
-// const favDialog = document.getElementById("favDialog");
-// const outputBox = document.querySelector("output");
-// const selectEl = favDialog.querySelector("select");
-// const confirmBtn = favDialog.querySelector("#confirmBtn");
-
-// // "Show the dialog" button opens the <dialog> modally
-// showButton.addEventListener("click", () => {
-//   favDialog.showModal();
-// });
-
-// // "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
-// favDialog.addEventListener("close", (e) => {
-//   outputBox.value =
-//     favDialog.returnValue === "default"
-//       ? "No return value."
-//       : `ReturnValue: ${favDialog.returnValue}.`; // Have to check for "default" rather than empty string
-// });
-
-// // Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
-// confirmBtn.addEventListener("click", (event) => {
-//   event.preventDefault(); // We don't want to submit this fake form
-//   favDialog.close(selectEl.value); // Have to send the select box value here.
-// });
 
 
 addInitialBooks();
