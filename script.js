@@ -21,13 +21,14 @@ function addBookToLibrary(title, author, pages, haveRead) {
   AddNewBookDiv(myLibrary[myLibrary.length-1]);
 }
 
-
-addBookToLibrary("Bone: The Great Cow Race", "Jeff Smith", 132, true);
-addBookToLibrary("Lord of the Flies", "William Golding", 260, true);
-addBookToLibrary("1984", "George Orwell", 300, false);
-addBookToLibrary("Romeo and Juliet", "William Shakespeare ", 125, true);
-addBookToLibrary("The Martian", "Andy Weir", 448, false);
-console.table(myLibrary);
+function addInitialBooks(){
+  addBookToLibrary("Bone: The Great Cow Race", "Jeff Smith", 132, true);
+  addBookToLibrary("Lord of the Flies", "William Golding", 260, true);
+  addBookToLibrary("1984", "George Orwell", 300, false);
+  addBookToLibrary("Romeo and Juliet", "William Shakespeare ", 125, true);
+  addBookToLibrary("The Martian", "Andy Weir", 448, false);
+  console.table(myLibrary);
+}
 
 
 // myLibrary.forEach(book => {
@@ -44,18 +45,20 @@ function AddNewBookDiv(newBook){
   newBookDiv.dataset.bookId = `${newBook.bookId}`;
 
 
-  const deleteButton = document.createElement("button");
-  deleteButton.addEventListener("click", (e) => {
 
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.addEventListener("click", (e) => {
     //target parent of current button being pressed to delete it. 
     e.currentTarget.parentElement.dataset.bookId
     if(e.currentTarget.parentElement.dataset.bookId === `${newBook.bookId}`)
     {
-      console.log(`${newBook.bookId}`)
       e.currentTarget.parentElement.remove();
     }
   })
   newBookDiv.appendChild(deleteButton);
+
   // 3. Append it to an existing container (like the body)
   container.appendChild(newBookDiv);
 }
@@ -130,3 +133,6 @@ form.addEventListener("submit", (event) => {
 //   event.preventDefault(); // We don't want to submit this fake form
 //   favDialog.close(selectEl.value); // Have to send the select box value here.
 // });
+
+
+addInitialBooks();
