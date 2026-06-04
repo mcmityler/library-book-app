@@ -1,4 +1,6 @@
 const myLibrary = [];
+const container = document.querySelector(".library-section");
+
 
 function Book(title, author, pages, haveRead) {
     if (!new.target) {
@@ -15,6 +17,8 @@ function addBookToLibrary(title, author, pages, haveRead) {
   // take params, create a book then store it in the array
   let newBook = new Book(title, author, pages, haveRead);
   myLibrary.push(newBook);
+  //add div of latest added book
+  AddNewBookDiv(myLibrary[myLibrary.length-1]);
 }
 
 
@@ -25,18 +29,21 @@ addBookToLibrary("Romeo and Juliet", "William Shakespeare ", 125, true);
 addBookToLibrary("The Martian", "Andy Weir", 448, false);
 console.table(myLibrary);
 
-const container = document.querySelector(".library-section");
 
-myLibrary.forEach(book => {
-   // 1. Create the new div element
+// myLibrary.forEach(book => {
+//   AddNewBookDiv(book);
+// });
+
+function AddNewBookDiv(newBook){
+  // 1. Create the new div element
   const newBookDiv = document.createElement("div");
   // 2. Add content, classes, or IDs
-  newBookDiv.textContent = `${book.title}`;
+  newBookDiv.textContent = `${newBook.title}`;
   newBookDiv.classList.add("book-div");
 
   // 3. Append it to an existing container (like the body)
   container.appendChild(newBookDiv);
-});
+}
 
 
 const bookDialog = document.querySelector("#book-dialog");
@@ -50,9 +57,38 @@ openButton.addEventListener("click", () => {
 closeButton.addEventListener("click", () => {
   bookDialog.close();
 });
-submitButton.addEventListener("click", (event) => {
-   event.preventDefault(); // We don't want to submit this fake form
-   bookDialog.close();
+// submitButton.addEventListener("click", (event) => {
+//    event.preventDefault(); // We don't want to submit this fake form
+//    bookDialog.close();
+// });
+
+// JavaScript Implementation
+const form = document.querySelector('#book-form');
+
+form.addEventListener("submit", (event) => {
+  // 1. Prevent the default browser page reload
+  event.preventDefault(); 
+  
+  // 2. Instantiate FormData by passing the form element
+  const formData = new FormData(event.target); 
+  
+  // 4. Transform all inputs instantly into a clean JavaScript Object
+  const allData = Object.fromEntries(formData); 
+  console.log(allData); // { username: "...", email: "..." }
+
+  for (let [key, value] of formData.entries()) {
+    console.log(`${key}: ${value}`);
+  }
+
+  const bookTitle = formData.get('title-input');
+  const bookAuthor = formData.get('author-input');
+  const bookPages = formData.get('pages-input');
+  const haveRead = formData.get('read-input');
+
+  addBookToLibrary(bookTitle, bookAuthor, bookPages, haveRead);
+  console.table(myLibrary);
+
+  bookDialog.close();
 });
 
 // const showButton = document.getElementById("showDialog");
