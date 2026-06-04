@@ -9,9 +9,57 @@
 </head>
 <body>
     <div class="container">
-        <div class="header-section">Header</div>
+        <div class="header-section">
+            <button class="open-dialog-button">New Book</button>
+
+            <dialog id="book-dialog">
+                <form>
+                    <p>Enter a book:</p>
+                    <div class="title-div">
+                        <label for="title-input">Title:</label>
+                        <input type="text" name="title-input" id="title-input" />
+                    </div>
+                    <div class="author-div">
+                        <label for="author-input">Author:</label>
+                        <input type="text" name="author-input" id="author-input" />
+                    </div>
+                    <div class="pages-div">
+                        <label for="pages-input">Page Count:</label>
+                        <input type="number" name="pages-input" id="pages-input" />
+                    </div>
+                    <div class="read-div">
+                        <label for="read-input">Has been read:</label>
+                        <input type="checkbox" name="read-input" id="read-input" />
+                    </div>
+                    <button class="submit-book-button">Submit book</button>
+                </form>
+                <button class="close-dialog-button">Close</button>
+            </dialog>
+        </div>
         <div class="library-section"></div>
     </div>
     <script src="./script.js"></script>
+    <!-- <dialog id="favDialog">
+        <form>
+            <p>
+            <label>
+                Favorite animal:
+                <select>
+                <option value="default">Choose…</option>
+                <option>Brine shrimp</option>
+                <option>Red panda</option>
+                <option>Spider monkey</option>
+                </select>
+            </label>
+            </p>
+            <div>
+            <button value="cancel" formmethod="dialog">Cancel</button>
+            <button id="confirmBtn" value="default">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+    <p>
+        <button id="showDialog">Show the dialog</button>
+    </p> -->
 </body>
 </html>
