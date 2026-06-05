@@ -30,3 +30,27 @@ body{
   );
   opacity: 0.75;
 }
+
+/* STAR RATING STYLING */
+
+.book-div .rating label{
+    display: inline-block;
+    cursor: pointer;
+    color: #ebebeb;
+}
+.book-div .rating  label i{
+    font-size: 2rem;
+    transition: 0.1s ease-in;
+}
+.book-div .rating .rating-radio{
+    display: none;
+}
+.book-div .rating input[type='radio']:checked + label i,
+.book-div .rating label:has(~ input[type='radio']:checked) i{
+    color: #ffea4e;
+}
+.book-div .rating label:hover i,
+.book-div .rating label:has(~ label:hover) i{
+    color: #a19c77; 
+    /* !important can add this to make it show whats being highlighted when already clicked */
+}

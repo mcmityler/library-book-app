@@ -66,7 +66,37 @@ function AddNewBookDiv(newBook){
   _haveReadLabel.textContent = "Have Read";
   _haveReadLabel.htmlFor = `read-${newBook.title}`
   newBookDiv.appendChild(_haveReadLabel);
+
   
+  //Create Star Rating System
+  
+  const starRating = document.createElement("div");
+  starRating.classList.add("rating");
+
+  for (let i = 0; i < 5; i++) {
+    
+    const starInput = Object.assign(document.createElement("input"), {
+      type: "radio",
+      name: `rating-${newBook.bookId}`,
+      id: `star-${i+1}-id-${newBook.bookId}`,
+      value: (i+1)
+    });
+    starInput.classList.add("rating-radio");
+    starRating.appendChild(starInput);
+    
+    const starLabel = document.createElement("label");
+    starLabel.htmlFor = `star-${i+1}-id-${newBook.bookId}` ;
+    const starIcon = document.createElement("i");
+    starIcon.classList.add("fa-solid", "fa-star");
+    
+    starLabel.appendChild(starIcon);
+    starRating.appendChild(starLabel);
+    
+    
+  }
+  newBookDiv.appendChild(starRating);
+  
+
 
   //Create delete button
   const deleteButton = document.createElement("button");
@@ -87,11 +117,11 @@ function AddNewBookDiv(newBook){
 }
 
 //used to clean up the library when you delete a book from it
-function deleteBookFromLibrary(bookID){
+function deleteBookFromLibrary(_bookID){
   let index = -1;
   //find index of book you are trying to delete
   for(const _book of myLibrary){
-    if(_book.bookId === bookID){
+    if(_book.bookId === _bookID){
       index = myLibrary.indexOf(_book);
       break;
     }
