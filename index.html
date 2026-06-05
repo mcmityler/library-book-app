@@ -9,36 +9,61 @@
     <link rel="stylesheet" href="./reset.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header-section">
-            <button class="open-dialog-button">New Book</button>
+    <header>
+        <h1>Library Books</h1>
+        <button class="add-book-button">Add book</button>
+    </header>
 
-            <dialog id="book-dialog">
-                <form id="book-form">
-                    <p>Enter a book:</p>
-                    <div class="title-div">
-                        <label for="title-input">Title:</label>
-                        <input type="text" name="title-input" id="title-input" required/>
-                    </div>
-                    <div class="author-div">
-                        <label for="author-input">Author:</label>
-                        <input type="text" name="author-input" id="author-input" required />
-                    </div>
-                    <div class="pages-div">
-                        <label for="pages-input">Page Count:</label>
-                        <input type="number" name="pages-input" id="pages-input" required />
-                    </div>
-                    <div class="read-div">
-                        <label for="read-input">Has been read:</label>
-                        <input type="checkbox" name="read-input" id="read-input" />
-                    </div>
-                    <button class="submit-book-button">Submit book</button>
-                </form>
-                <button class="close-dialog-button">Close</button>
-            </dialog>
+    <main>
+        <div class="container">
+            <div class="book-shelf">
+
+            </div>
         </div>
-        <div class="library-section"></div>
-    </div>
+        <dialog id="new-book-dialog">
+            <form id="new-book-form">
+                <h2 class="form-title">New Book</h2>
+                <div class="title-container">
+                    <label for="title-input">Title:</label>
+                    <input type="text" name="title-input" id="title-input" required/>
+                </div>
+                <div class="author-container">
+                    <label for="author-input">Author:</label>
+                    <input type="text" name="author-input" id="author-input" required />
+                </div>
+                <div class="pages-container">
+                    <label for="pages-input">Page Count:</label>
+                    <input type="number" name="pages-input" id="pages-input" required />
+                </div>
+                <div class="cover-container">
+                    <label for="cover-input">Cover Image (URL):</label>
+                    <input type="url" name="cover-input" id="cover-input" placeholder="https://..."/>
+                </div>
+                <div class="isRead-container">
+                    <label for="read-input">Has been read:</label>
+                    <input type="checkbox" name="read-input" id="read-input" />
+                </div>
+                <div class="rating-input-container">
+                    <input type="radio" name="rating" id="star-1" class="rating-radio" value="1">
+                    <label for="star-1"><i class="fa-solid fa-star"></i></label>
+                    
+                    <input type="radio" name="rating" id="star-2" class="rating-radio" value="2">
+                    <label for="star-2"><i class="fa-solid fa-star"></i></label>
+
+                    <input type="radio" name="rating" id="star-3" class="rating-radio" value="3">
+                    <label for="star-3"><i class="fa-solid fa-star"></i></label>
+
+                    <input type="radio" name="rating" id="star-4" class="rating-radio" value="4">
+                    <label for="star-4"><i class="fa-solid fa-star"></i></label>
+
+                    <input type="radio" name="rating" id="star-5" class="rating-radio" value="5">
+                    <label for="star-5"><i class="fa-solid fa-star"></i></label>
+                </div>
+                <button class="submit-book-button">Submit book</button>
+            </form>
+            <button class="close-dialog-button">Close</button>
+        </dialog>
+    </main>
     <script src="./script.js"></script>
 </body>
 </html>
