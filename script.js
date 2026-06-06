@@ -47,13 +47,10 @@ function AddNewBookDiv(newBook){
   newBookDiv.appendChild(_bookTitle);
 
   const _bookCover = document.createElement("img");
-  if (newBook.cover != '') {
-    _bookCover.setAttribute('src', newBook.cover);
-  } else {
-    _bookCover.setAttribute('src', './images/default-book-cover.jpg');
-  }
+  _bookCover.setAttribute('src', newBook.cover);
   _bookCover.classList.add("book-cover");
-  _bookCover.onerror = function(){
+  //if a book cover src doesn't load go to default cover
+  _bookCover.onerror = function(){ 
     _bookCover.src = './images/default-book-cover.jpg';
   };
   newBookDiv.appendChild(_bookCover);
