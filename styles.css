@@ -6,8 +6,6 @@ body{
 }
 .container{
     min-height: 100%;
-    display: grid;
-    grid-template-rows: 1fr 5fr;
 }
 
 .book-shelf{
@@ -52,10 +50,10 @@ body{
 .rating-input-container .rating-radio{
     display: none;
 }
-.rating-input-container input[type='radio']:checked + label i,
-.rating-input-container label:has(~ input[type='radio']:checked) i,
-.book-div .rating input[type='radio']:checked + label i,
-.book-div .rating label:has(~ input[type='radio']:checked) i{
+.rating-input-container input[type='radio']:checked + label,
+.rating-input-container label:has(~ input[type='radio']:checked),
+.book-div .rating input[type='radio']:checked + label,
+.book-div .rating label:has(~ input[type='radio']:checked){
     color: #ffea4e;
 }
 .book-div .rating label:hover i,
@@ -65,4 +63,9 @@ body{
 {
     color: #a19c77; 
     /* !important can add this to make it show whats being highlighted when already clicked */
+}
+.book-div .rating label:active i,
+.rating-input-container label:active i{
+    color: #635e3d; 
+
 }
