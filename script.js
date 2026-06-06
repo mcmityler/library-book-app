@@ -43,12 +43,12 @@ function AddNewBookDiv(newBook){
 
   const _bookTitle = document.createElement("p");
   _bookTitle.textContent = newBook.title;
-  _bookTitle.classList.add("book-title");
+  _bookTitle.classList.add("book-title", "span-entire");
   newBookDiv.appendChild(_bookTitle);
 
   const _bookCover = document.createElement("img");
   _bookCover.setAttribute('src', newBook.cover);
-  _bookCover.classList.add("book-cover");
+  _bookCover.classList.add("book-cover", "span-entire");
   //if a book cover src doesn't load go to default cover
   _bookCover.onerror = function(){ 
     _bookCover.src = './images/default-book-cover.jpg';
@@ -58,12 +58,12 @@ function AddNewBookDiv(newBook){
 
   const _bookAuthor = document.createElement("p");
   _bookAuthor.textContent = `by: ${newBook.author}`;
-  _bookAuthor.classList.add("book-author");
+  _bookAuthor.classList.add("book-author", "span-entire");
   newBookDiv.appendChild(_bookAuthor);
 
   const _bookPages = document.createElement("p");
   _bookPages.textContent = `Pages: ${newBook.pages}`;
-  _bookPages.classList.add("book-pages");
+  _bookPages.classList.add("book-pages", "span-entire");
   newBookDiv.appendChild(_bookPages);
 
   const _isRead = document.createElement("input");
@@ -71,6 +71,7 @@ function AddNewBookDiv(newBook){
   _isRead.id = `read-${newBook.title}`;
   _isRead.checked = newBook.haveRead === true ? true: false;
   _isRead.classList.add( (newBook.haveRead === true) ? "is-read": "not-read");
+  _isRead.classList.add("isRead-checkbox");
   
   _isRead.addEventListener("change", updateIsRead); //to update table when you change reading status
   newBookDiv.appendChild(_isRead);
@@ -78,11 +79,12 @@ function AddNewBookDiv(newBook){
   const _isReadLabel = document.createElement("label");
   _isReadLabel.textContent = "Have Read";
   _isReadLabel.htmlFor = `read-${newBook.title}`
+  _isReadLabel.classList.add("isRead-label");
   newBookDiv.appendChild(_isReadLabel);
 
   //Create Star Rating System
   const starRating = document.createElement("div");
-  starRating.classList.add("rating");
+  starRating.classList.add("rating", "span-entire");
 
   for (let i = 0; i < 5; i++) {
     
@@ -110,6 +112,7 @@ function AddNewBookDiv(newBook){
   
   //Create delete button
   const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete-button", "span-entire");
   deleteButton.textContent = "Delete";
   deleteButton.addEventListener("click", (event) => {
     //target parent of current button being pressed to delete it. 
