@@ -34,7 +34,6 @@ body{
 }
 
 /* STAR RATING STYLING */
-
 .book-div .rating label,
 .rating-input-container label{
     display: inline-block;
@@ -68,4 +67,9 @@ body{
 .rating-input-container label:active i{
     color: #635e3d; 
 
+}
+
+/* hide stars when book hasn't been read yet */
+.book-div:has(.not-read) .rating{
+    display: none;
 }

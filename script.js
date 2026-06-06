@@ -70,6 +70,8 @@ function AddNewBookDiv(newBook){
   _isRead.type = 'checkbox';
   _isRead.id = `read-${newBook.title}`;
   _isRead.checked = newBook.haveRead === true ? true: false;
+  _isRead.classList.add( (newBook.haveRead === true) ? "is-read": "not-read");
+  
   _isRead.addEventListener("change", updateIsRead); //to update table when you change reading status
   newBookDiv.appendChild(_isRead);
 
@@ -188,6 +190,15 @@ function updateIsRead(event){
   }
   if (index > -1) { 
       allBooks[index].haveRead = event.currentTarget.checked;
+      if (event.currentTarget.checked){
+        event.currentTarget.classList.add("is-read");
+        event.currentTarget.classList.remove("not-read");
+
+      }
+      else{
+        event.currentTarget.classList.add("not-read");
+        event.currentTarget.classList.remove("is-read");
+      }
   }
   else{
     console.log(`Book id: ${event.currentTarget.parentElement.dataset.bookId} could not be found`);
