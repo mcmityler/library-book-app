@@ -71,13 +71,13 @@ function AddNewBookDiv(newBook){
   _isRead.id = `read-${newBook.title}`;
   _isRead.checked = newBook.haveRead === true ? true: false;
   _isRead.classList.add( (newBook.haveRead === true) ? "is-read": "not-read");
-  _isRead.classList.add("isRead-checkbox");
+  _isRead.classList.add("isRead-checkbox", "checkbox-input");
   
   _isRead.addEventListener("change", updateIsRead); //to update table when you change reading status
   newBookDiv.appendChild(_isRead);
 
   const _isReadLabel = document.createElement("label");
-  _isReadLabel.textContent = "Have Read";
+  _isReadLabel.textContent = (newBook.haveRead === true) ? "Have Read": "Haven't Read";
   _isReadLabel.htmlFor = `read-${newBook.title}`
   _isReadLabel.classList.add("isRead-label");
   newBookDiv.appendChild(_isReadLabel);
@@ -211,11 +211,13 @@ function updateIsRead(event){
       if (event.currentTarget.checked){
         event.currentTarget.classList.add("is-read");
         event.currentTarget.classList.remove("not-read");
+        event.currentTarget.parentElement.querySelector(".isRead-label").textContent = "Have Read";
 
       }
       else{
         event.currentTarget.classList.add("not-read");
         event.currentTarget.classList.remove("is-read");
+        event.currentTarget.parentElement.querySelector(".isRead-label").textContent = "Haven't Read";
       }
   }
   else{
