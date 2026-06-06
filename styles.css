@@ -3,6 +3,7 @@
 }
 body{
     min-height: 100vh;
+    background-color: grey;
 }
 .container{
     min-height: 100%;
@@ -72,4 +73,65 @@ body{
 /* hide stars when book hasn't been read yet */
 .book-div:has(.not-read) .rating{
     display: none;
+}
+
+
+
+/* PAGE HEADER */
+header{
+    display: grid;
+    gap: 20px;
+}
+header h1{
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+}
+/* ADD BOOK BUTTON FANCY */
+
+.add-button-container{
+    position: relative;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    /* background-color: blue; */
+}
+.add-book-button{
+    text-transform: uppercase;
+    text-decoration: none;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    border-radius: 100%;
+    transition: all .2s;
+    background-color: #fff;
+    color: #777;
+}
+
+.add-book-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.add-book-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.add-book-button::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+    background-color: #fff;
+}
+
+.add-book-button:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
 }
