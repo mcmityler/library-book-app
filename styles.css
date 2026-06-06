@@ -1,17 +1,16 @@
 :root{
-    --light-pink: #FFE2E2;
-    --pink: #FFC7C7;
-    --light-color: #F6F6F6;
-
-    --peach: #FFE3B0;
-    --blue: #8ED6FF;
-
 
     --lightest-purple: #F4eeff;
     --purple: #dcd6f7;
     --dark-purple: #a6b1e1;
     --dark-color: #424874;
 
+    --light-color: #F5F5F5;
+    --light-green: #76ABAE ;
+    ---green: #436b6d ;
+    --dark-green: #303841 ;
+    --orange: #FF5722 ;
+    
 }
 
 *{
@@ -29,9 +28,9 @@
 
 body{
     min-height: 100vh;
-    background-color: var(--dark-purple);
+    background-color: var(--green);
     font-family:"Raleway-font", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 500;
+    font-weight: 600;
 }
 .container{
     min-height: 100%;
@@ -68,8 +67,8 @@ body{
 header{
     display: grid;
     gap: 20px;
-    background-color: var(--dark-color);
-    color: var(--lightest-purple);
+    background-color: var(--dark-green);
+    color: var(--light-color);
 }
 header h1{
     text-align: center;
@@ -95,8 +94,8 @@ header h1{
     display: inline-block;
     border-radius: 100%;
     transition: all .2s;
-    background-color: #fff;
-    color: #777;
+    background-color: var(--orange);
+    color: var(--light-color);
 }
 
 .add-book-button:hover {
@@ -119,7 +118,7 @@ header h1{
     left: 0;
     z-index: -1;
     transition: all .4s;
-    background-color: #fff;
+    background-color: var(--orange);
 }
 
 .add-book-button:hover::after {
@@ -130,8 +129,8 @@ header h1{
 
 /* Book DIV Styling */
 .book-div{
-    background-color: var(--purple);
-    color: var(--dark-color)
+    background-color: var(--light-green);
+    color: var(--dark-green)
 }
 
 
