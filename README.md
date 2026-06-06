@@ -18,4 +18,4 @@ Add Button hover effect source: https://codepen.io/avvign/pen/NVJzQW
 
 Font: https://fonts.google.com/specimen/Raleway
 
-Color Palette: https://colorhunt.co/palette/f4eeffdcd6f7a6b1e1424874
+Color Palette: https://colorhunt.co/palette/f5f5f576abae303841ff5722

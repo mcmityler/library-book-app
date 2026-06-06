@@ -112,8 +112,23 @@ function AddNewBookDiv(newBook){
   
   //Create delete button
   const deleteButton = document.createElement("button");
+  
+  const  trashSpan = document.createElement("span");
+  const  insideSpan = document.createElement("span");
+  const  insideIcon = document.createElement("i");
+  trashSpan.classList.add("trash");
+  trashSpan.appendChild(insideSpan);
+  trashSpan.appendChild(insideIcon);
+  deleteButton.appendChild(trashSpan);
+
+  /*
+  <span class="trash">
+  <span></span>
+  <i></i>
+  </span>
+  */
+ 
   deleteButton.classList.add("delete-button", "span-entire");
-  deleteButton.textContent = "Delete";
   deleteButton.addEventListener("click", (event) => {
     //target parent of current button being pressed to delete it. 
     if(event.currentTarget.parentElement.dataset.bookId === `id_${newBook.bookId}`)
@@ -234,6 +249,7 @@ addBookButton.addEventListener("click", () => {
   bookDialog.showModal();
 });
 closeButton.addEventListener("click", () => {
+  form.reset(); //clear form inputs
   bookDialog.close();
 });
 

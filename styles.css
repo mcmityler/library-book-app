@@ -15,6 +15,10 @@
     --star-select: #ffea4e;
     --star-hover: #999154;
     --star-click: #413e2b;
+
+    --trash-color: #ff6873;
+    --trash-hover: #d3323c;
+    
     
 }
 
@@ -167,11 +171,7 @@ header h1{
 
 
 }
-.delete-button{
-    /* set so that when star rating disappears button doesn't move */
-    grid-row: -2/ -1; 
 
-}
 
 
 /* STAR RATING STYLING */
@@ -218,4 +218,101 @@ header h1{
     display: none;
 }
 
+
+
+/* DELETE BUTTON FANCY */
+.delete-button{
+    /* set so that when star rating disappears button doesn't move */
+    grid-row: -2/ -1; 
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-content: center;
+    background-color: transparent;
+    border: none;
+}
+.trash {
+	background:var(--trash-color);
+	width: 66px;
+	height: 80px;
+	display: inline-block;
+	margin:0 auto;
+	
+	position: relative;
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	-moz-border-radius-bottomright: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+    transform: scale(0.3);
+}
+.trash span {
+	position: absolute;
+	height: 12px;
+	background: var(--trash-color);
+	top: -19px;
+	left: -10px;
+	right: -10px;
+	
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	transform: rotate(0deg);
+	transition: transform 250ms;
+	transform-origin: 19% 100%;
+}
+.trash span:after {
+	content: '';
+	position: absolute;
+	width: 27px;
+	height: 7px;
+	background: var(--trash-color);
+	top: -10px;
+	
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	transform: rotate(0deg);
+	transition: transform 250ms;
+	transform-origin: 19% 100%;
+	left: 27px;
+}
+
+
+.trash i {
+	position:relative;
+	width: 5px;
+	height:50px;
+	background:var(--light-green);
+	display:block;
+	margin:14px auto;
+	border-radius: 5px;
+}
+.trash i:after {
+	content: '';
+	width: 5px;
+	height: 50px;
+	background: var(--light-green);
+	position: absolute;
+	left: -18px;
+	border-radius: 5px;
+}
+.trash i:before {
+	content: '';
+	width: 5px;
+	height: 50px;
+	background: var(--light-green);
+	position: absolute;
+	right: -18px;
+	border-radius: 5px;
+}
+
+.delete-button:hover .trash span {
+	transform: rotate(-45deg);
+	transition: transform 250ms;
+}
+.delete-button:hover .trash,
+.delete-button:hover .trash span::after,
+.delete-button:hover .trash span {
+    background: var(--trash-hover)
+}
 
