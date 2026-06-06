@@ -1,9 +1,21 @@
 *{
     outline: 1px solid red;
 }
+
+@font-face {
+  font-family: "Raleway-font";
+  src:
+    local("Raleway"),
+    url("./fonts/Raleway-VariableFont_wght.ttf") format("truetype"),
+    url("./fonts/Raleway-VariableFont_wght.woff") format("woff"),
+    url("./fonts/Raleway-VariableFont_wght.woff2") format("woff2");
+}
+
 body{
     min-height: 100vh;
     background-color: grey;
+    font-family:"Raleway-font", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 500;
 }
 .container{
     min-height: 100%;
