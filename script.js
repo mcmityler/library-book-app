@@ -70,6 +70,7 @@ function AddNewBookDiv(newBook){
   _isRead.type = 'checkbox';
   _isRead.id = `read-${newBook.title}`;
   _isRead.checked = newBook.haveRead === true ? true: false;
+  _isRead.addEventListener("change", updateIsRead); //to update table when you change reading status
   newBookDiv.appendChild(_isRead);
 
   const _isReadLabel = document.createElement("label");
@@ -172,6 +173,25 @@ function submitNewBook(event){
   bookDialog.close();
 
   form.reset(); //clear form inputs
+}
+function updateIsRead(event){
+  
+  let index = -1;
+  //find index of book you are trying to delete
+  for(const _book of allBooks){
+    if(event.currentTarget.parentElement.dataset.bookId === `id_${_book.bookId}`){
+      index = allBooks.indexOf(_book);
+      break;
+    }
+  }
+  if (index > -1) { 
+      allBooks[index].haveRead = event.currentTarget.checked;
+  }
+  else{
+    console.log(`Book id: ${event.currentTarget.parentElement.dataset.bookId} could not be found`);
+  }
+  console.table(allBooks);
+
 }
 
 
