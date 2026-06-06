@@ -21,7 +21,7 @@
 }
 
 *{
-    /* outline: 1px solid red; */
+    outline: 1px solid red;
 }
 
 @font-face {
@@ -42,20 +42,6 @@ body{
 .container{
     min-height: 100%;
 }
-
-
-::backdrop {
-  background-image: linear-gradient(
-    45deg,
-    var(--green),
-    var(--purple),
-    var(--dark-green),
-    var(--dark-purple)
-  );
-  opacity: 0.75;
-}
-
-
 
 /* PAGE HEADER */
 header{
@@ -398,4 +384,53 @@ input[type=checkbox] {
 
 .checkbox-input:checked:hover {
     background-color: var(--dark-green);
+}
+
+
+/* DIALOG STYLING */
+
+#new-book-dialog{
+   
+    background-color: var(--light-green);
+    border: 5px solid var(--dark-green);
+    border-radius: 20px;
+}
+.dialog-container{
+    display: grid;
+    grid-template-columns: 1fr 40px;
+}
+::backdrop {
+  background-image: linear-gradient(
+    45deg,
+    var(--green),
+    var(--purple),
+    var(--dark-green),
+    var(--dark-purple)
+  );
+  opacity: 0.75;
+}
+#new-book-form{
+    display: grid;
+    gap: 20px;
+    grid-column: 1/-1;
+    place-items: center;
+}
+.rating-input-container, 
+.isRead-container{
+    justify-self: center;
+}
+.close-dialog-button{
+    grid-row: 1/2;
+    grid-column: -2/-1;
+    background-color: var(--orange);
+    border-radius: 10px;
+}
+.submit-book-button{
+    background-color: var(--dark-green);
+    color: var(--light-color);
+}
+.submit-book-button:hover{
+    background-color: var(--green);
+    color: black;
+
 }
