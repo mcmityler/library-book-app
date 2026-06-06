@@ -10,6 +10,11 @@
     ---green: #436b6d ;
     --dark-green: #303841 ;
     --orange: #FF5722 ;
+
+    --star-normal: #d4d3cc;
+    --star-select: #ffea4e;
+    --star-hover: #999154;
+    --star-click: #413e2b;
     
 }
 
@@ -43,7 +48,7 @@ body{
     grid-auto-flow: row;
     grid-auto-rows: 350px;
     gap: 20px;
-    margin: 10px;
+    margin: 20px;
 }
 .book-cover{
     width: 125px;
@@ -96,6 +101,8 @@ header h1{
     transition: all .2s;
     background-color: var(--orange);
     color: var(--light-color);
+    position: absolute;
+    top: 30;
 }
 
 .add-book-button:hover {
@@ -114,7 +121,7 @@ header h1{
     width: 100%;
     border-radius: 100%;
     position: absolute;
-    top: 0;
+    top: 30;
     left: 0;
     z-index: -1;
     transition: all .4s;
@@ -139,7 +146,7 @@ header h1{
 .rating-input-container label{
     display: inline-block;
     cursor: pointer;
-    color: #ebebeb;
+    color: var(--star-normal);
 }
 .book-div .rating  label i,
 .rating-input-container label i{
@@ -150,23 +157,26 @@ header h1{
 .rating-input-container .rating-radio{
     display: none;
 }
+/* when sibling checked  */
 .rating-input-container input[type='radio']:checked + label,
 .rating-input-container label:has(~ input[type='radio']:checked),
 .book-div .rating input[type='radio']:checked + label,
 .book-div .rating label:has(~ input[type='radio']:checked){
-    color: #ffea4e;
+    color: var(--star-select);
 }
+/* when hovered */
 .book-div .rating label:hover i,
 .book-div .rating label:has(~ label:hover) i,
 .rating-input-container label:hover i,
 .rating-input-container label:has(~ label:hover) i
 {
-    color: #a19c77; 
-    /* !important can add this to make it show whats being highlighted when already clicked */
+    color: var(--star-hover);
 }
+
+/* When clicked */
 .book-div .rating label:active i,
 .rating-input-container label:active i{
-    color: #635e3d; 
+    color: var(--star-click);; 
 
 }
 
