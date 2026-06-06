@@ -8,7 +8,7 @@
     --light-color: #F5F5F5;
     --light-green: #84bdc0 ;
     --green: #3f797c ;
-    --dark-green: #303841 ;
+    --dark-green: #1c2e30 ;
     --orange: #FF5722 ;
 
     --star-normal: #d4d3cc;
@@ -96,6 +96,7 @@ header h1{
 .add-book-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .add-book-button:active {
@@ -325,7 +326,9 @@ header h1{
 .delete-button:hover .trash,
 .delete-button:hover .trash span::after,
 .delete-button:hover .trash span {
-    background: var(--orange)
+    background: var(--orange);
+    cursor: pointer;
+
 }
 
 
@@ -373,6 +376,11 @@ input[type=checkbox] {
 .checkbox-input:hover {
     background-color: var(--orange);
     transition-duration: 0s;
+    cursor: pointer;
+
+}
+.isRead-label:hover{
+    cursor: pointer;
 }
 
 .checkbox-input:checked {
