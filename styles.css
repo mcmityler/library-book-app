@@ -1,5 +1,21 @@
+:root{
+    --light-pink: #FFE2E2;
+    --pink: #FFC7C7;
+    --light-color: #F6F6F6;
+
+    --peach: #FFE3B0;
+    --blue: #8ED6FF;
+
+
+    --lightest-purple: #F4eeff;
+    --purple: #dcd6f7;
+    --dark-purple: #a6b1e1;
+    --dark-color: #424874;
+
+}
+
 *{
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
 }
 
 @font-face {
@@ -13,7 +29,7 @@
 
 body{
     min-height: 100vh;
-    background-color: grey;
+    background-color: var(--dark-purple);
     font-family:"Raleway-font", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 500;
 }
@@ -46,59 +62,22 @@ body{
   opacity: 0.75;
 }
 
-/* STAR RATING STYLING */
-.book-div .rating label,
-.rating-input-container label{
-    display: inline-block;
-    cursor: pointer;
-    color: #ebebeb;
-}
-.book-div .rating  label i,
-.rating-input-container label i{
-    font-size: 2rem;
-    transition: 0.1s ease-in;
-}
-.book-div .rating .rating-radio,
-.rating-input-container .rating-radio{
-    display: none;
-}
-.rating-input-container input[type='radio']:checked + label,
-.rating-input-container label:has(~ input[type='radio']:checked),
-.book-div .rating input[type='radio']:checked + label,
-.book-div .rating label:has(~ input[type='radio']:checked){
-    color: #ffea4e;
-}
-.book-div .rating label:hover i,
-.book-div .rating label:has(~ label:hover) i,
-.rating-input-container label:hover i,
-.rating-input-container label:has(~ label:hover) i
-{
-    color: #a19c77; 
-    /* !important can add this to make it show whats being highlighted when already clicked */
-}
-.book-div .rating label:active i,
-.rating-input-container label:active i{
-    color: #635e3d; 
-
-}
-
-/* hide stars when book hasn't been read yet */
-.book-div:has(.not-read) .rating{
-    display: none;
-}
-
 
 
 /* PAGE HEADER */
 header{
     display: grid;
     gap: 20px;
+    background-color: var(--dark-color);
+    color: var(--lightest-purple);
 }
 header h1{
     text-align: center;
     width: 100%;
     margin-top: 10px;
 }
+
+
 /* ADD BOOK BUTTON FANCY */
 
 .add-button-container{
@@ -147,3 +126,54 @@ header h1{
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0;
 }
+
+
+/* Book DIV Styling */
+.book-div{
+    background-color: var(--purple);
+    color: var(--dark-color)
+}
+
+
+/* STAR RATING STYLING */
+.book-div .rating label,
+.rating-input-container label{
+    display: inline-block;
+    cursor: pointer;
+    color: #ebebeb;
+}
+.book-div .rating  label i,
+.rating-input-container label i{
+    font-size: 2rem;
+    transition: 0.1s ease-in;
+}
+.book-div .rating .rating-radio,
+.rating-input-container .rating-radio{
+    display: none;
+}
+.rating-input-container input[type='radio']:checked + label,
+.rating-input-container label:has(~ input[type='radio']:checked),
+.book-div .rating input[type='radio']:checked + label,
+.book-div .rating label:has(~ input[type='radio']:checked){
+    color: #ffea4e;
+}
+.book-div .rating label:hover i,
+.book-div .rating label:has(~ label:hover) i,
+.rating-input-container label:hover i,
+.rating-input-container label:has(~ label:hover) i
+{
+    color: #a19c77; 
+    /* !important can add this to make it show whats being highlighted when already clicked */
+}
+.book-div .rating label:active i,
+.rating-input-container label:active i{
+    color: #635e3d; 
+
+}
+
+/* hide stars when book hasn't been read yet */
+.book-div:has(.not-read) .rating{
+    display: none;
+}
+
+
