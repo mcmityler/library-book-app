@@ -171,6 +171,9 @@ header h1{
 
 
 }
+.book-author, .book-pages{
+    font-size: 1.2em;
+}
 
 
 
@@ -232,7 +235,7 @@ header h1{
     border: none;
 }
 .trash {
-	background:var(--trash-color);
+	background:var(--dark-green);
 	width: 66px;
 	height: 80px;
 	display: inline-block;
@@ -250,7 +253,7 @@ header h1{
 .trash span {
 	position: absolute;
 	height: 12px;
-	background: var(--trash-color);
+	background: var(--dark-green);
 	top: -19px;
 	left: -10px;
 	right: -10px;
@@ -266,7 +269,7 @@ header h1{
 	position: absolute;
 	width: 27px;
 	height: 7px;
-	background: var(--trash-color);
+	background: var(--dark-green);
 	top: -10px;
 	
 	border-top-left-radius: 10px;
@@ -313,6 +316,6 @@ header h1{
 .delete-button:hover .trash,
 .delete-button:hover .trash span::after,
 .delete-button:hover .trash span {
-    background: var(--trash-hover)
+    background: var(--orange)
 }
 
