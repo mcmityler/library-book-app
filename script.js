@@ -243,9 +243,9 @@ form.addEventListener("submit", submitNewBook);
 
 //populate the library with some basic books
 function addInitialBooks(){
-  addBookToLibrary("Bone: The Great Cow Race", "Jeff Smith", 132, "./images/bone-cow-race.jpg", true, 5);
   addBookToLibrary("Lord of the Flies", "William Golding", 260, "./images/lord-of-the-flies-cover.jpg", true, 2);
   addBookToLibrary("1984", "George Orwell", 300, "./images/1984-cover.jpg", false, 4);
+  addBookToLibrary("Bone: The Great Cow Race", "Jeff Smith", 132, "./images/bone-cow-race.jpg", true, 5);
   addBookToLibrary("Romeo and Juliet", "William Shakespeare ", 125, "./images/romeo-juliet-cover.jpg", true, 3);
   addBookToLibrary("The Martian", "Andy Weir", 448, "./images/martian-cover.jpg", false, 5);
   console.table(allBooks);
