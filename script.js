@@ -92,6 +92,7 @@ function AddNewBookDiv(newBook){
     });
     starInput.checked = (+newBook.rating === i+1)? true : false;
     starInput.classList.add("rating-radio");
+    starInput.addEventListener("change", updateRating)
     starRating.appendChild(starInput);
     
     const starLabel = document.createElement("label");
@@ -174,6 +175,7 @@ function submitNewBook(event){
 
   form.reset(); //clear form inputs
 }
+//to update allBook array when read status changes
 function updateIsRead(event){
   
   let index = -1;
@@ -192,6 +194,25 @@ function updateIsRead(event){
   }
   console.table(allBooks);
 
+}
+
+//to update allBook array when rating changes
+function updateRating(event){
+  let index = -1;
+  //find index of book you are trying to delete
+  for(const _book of allBooks){
+    if(event.currentTarget.parentElement.parentElement.dataset.bookId === `id_${_book.bookId}`){
+      index = allBooks.indexOf(_book);
+      break;
+    }
+  }
+  if (index > -1) { 
+      allBooks[index].rating = +event.currentTarget.value;
+  }
+  else{
+    console.log(`Book id: ${event.currentTarget.parentElement.parentElement.dataset.bookId} could not be found`);
+  }
+  console.table(allBooks);
 }
 
 
