@@ -29,15 +29,15 @@
                 <form id="new-book-form">
                     <div class="title-container input-container">
                         <input type="text" name="title-input" id="title-input" placeholder="" maxlength="26"/>
-                        <label for="title-input" class="hover-pointer">Title</label>
+                        <label for="title-input" class="hover-pointer">Title<span class="asterisk">*</span></label>
                     </div>
                     <div class="author-container input-container">
                         <input type="text" name="author-input" id="author-input" placeholder="" required maxlength="26"/>
-                        <label for="author-input" class="hover-pointer" >Author</label>
+                        <label for="author-input" class="hover-pointer" >Author<span class="asterisk">*</span></label>
                     </div>
                     <div class="pages-container input-container">
                         <input type="number" name="pages-input" id="pages-input" max="99999" placeholder="" required />
-                        <label for="pages-input" class="hover-pointer">Page Count</label>
+                        <label for="pages-input" class="hover-pointer">Page Count<span class="asterisk">*</span></label>
                     </div>
                     <div class="cover-container input-container">
                         <input type="url" name="cover-input" placeholder="" id="cover-input"/>

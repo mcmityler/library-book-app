@@ -612,7 +612,10 @@ because the nesting selector cannot represent pseudo-elements. */
 
 
 /* APPLE LIKE INPUT */
-
+.asterisk{
+    color: var(--orange);
+    font-family: 'Courier New', Courier, monospace;
+}
 .input-container{
     width: 400px;
     position: relative;
