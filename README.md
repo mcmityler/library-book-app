@@ -26,3 +26,10 @@ Color Palette: https://colorhunt.co/palette/f5f5f576abae303841ff5722
 Mauricio Allende checkbox : https://codepen.io/mallendeo/details/QWKrEL 
 
 Tutorial followed for inputs: https://www.youtube.com/watch?v=9wO594NXw34&list=PLjYwlnQbXANvVJUgAJ-plXsUDFYwv5-BW 
+
+
+TO DO:
+
+1) Asterisk to required input fields
+2) Make read green darker in new book page
+3) way to edit already existing books

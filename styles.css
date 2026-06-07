@@ -537,7 +537,7 @@ input[type=checkbox] {
 .submit-checkbox .tgl-flip:checked + .tgl-btn:after {
     transform: rotateY(0);
     left: 0;
-    background: #7FC6A6;
+    background: var(--green);
 }
 .submit-checkbox .tgl-flip:checked + .tgl-btn:active:after {
     transform: rotateY(20deg);
