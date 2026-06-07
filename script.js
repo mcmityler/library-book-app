@@ -5,6 +5,7 @@ const addBookButton = document.querySelector(".add-book-button");
 const closeButton = document.querySelector(".close-dialog-button");
 const submitButton = document.querySelector(".submit-book-button");
 const form = document.querySelector('#new-book-form');
+const formTitle = document.querySelector(".form-title");
 
 //Book constructor 
 function Book(title, author, pages, cover, haveRead, rating) {
@@ -120,13 +121,6 @@ function AddNewBookDiv(newBook){
   trashSpan.appendChild(insideSpan);
   trashSpan.appendChild(insideIcon);
   deleteButton.appendChild(trashSpan);
-
-  /*
-  <span class="trash">
-  <span></span>
-  <i></i>
-  </span>
-  */
  
   deleteButton.classList.add("delete-button", "span-entire");
   deleteButton.addEventListener("click", (event) => {
@@ -138,6 +132,14 @@ function AddNewBookDiv(newBook){
     }
   })
   newBookDiv.appendChild(deleteButton);
+
+  const editButton = document.createElement("button");
+  editButton.textContent = "edit";
+  editButton.classList.add(`edit_${newBook.bookId}`, "edit-button");
+  editButton.addEventListener("click", (event) => {
+    editBook(event);
+  })
+  newBookDiv.appendChild(editButton);
 
   //add new book to the actual book container html 
   bookContainer.appendChild(newBookDiv);
@@ -158,6 +160,60 @@ function deleteBookFromLibrary(_bookID){
   }
   else{
     console.log(`Book id: ${_bookID} could not be found`);
+  }
+  console.table(allBooks);
+}
+const titleInputfield = form.querySelector("#title-input");
+const authorInputfield = form.querySelector("#author-input");
+const pagesInputfield = form.querySelector("#pages-input");
+const coverInputfield = form.querySelector("#cover-input");
+const haveReadInputfield = form.querySelector("#read-input");
+const starRatingInputfields = form.querySelectorAll(".dialog-star");
+let isEditing = false;
+let editingBook = {}; //current book being edited
+let editBookEvent = "";
+//edit an already existing book div
+function editBook(event){
+  //get current book object
+  console.log(event.currentTarget.parentElement)
+  editBookEvent = event;
+  editingBook = getBookObject(editBookEvent)
+  //fill dialog inputs based off current book you want to edit
+  titleInputfield.value = editingBook.title;
+  authorInputfield.value = editingBook.author;
+  pagesInputfield.value = editingBook.pages;
+  coverInputfield.value = editingBook.cover;
+  haveReadInputfield.checked = editingBook.haveRead;
+  starRatingInputfields[editingBook.rating - 1].checked = true;
+
+  //Show the modal / dialog 
+  bookDialog.showModal();
+
+  //When press submit button...
+  isEditing = true; //let submit button know its editing not submitting new.
+  
+  //Also change "new book" to "edit book"
+  formTitle.textContent = "Edit Book"
+  //Also change "submit book" to "submit changes"
+  submitButton.textContent = "Submit Changes"
+  
+}
+
+function getBookObject(event){
+  let index = -1;
+  //find index of book you are trying to delete
+  for(const _book of allBooks){
+    if(`id_${_book.bookId}` === event.currentTarget.parentElement.dataset.bookId){
+      index = allBooks.indexOf(_book);
+      break;
+    }
+  }
+  if (index > -1) { 
+    console.log("Returned book: " + index + " -- " +  allBooks[index].title)
+    return allBooks[index];
+  }
+  else{
+    console.log(`Book id: ${event.currentTarget.parentElement.dataset.bookId} could not be found`);
   }
   console.table(allBooks);
 }
@@ -186,14 +242,45 @@ function submitNewBook(event){
     haveRead = true;
   }
 
-  let bookRating = +formData.get('rating');
+  let bookRating = +formData.get('rating-initial');
 
-  addBookToLibrary(bookTitle, bookAuthor, bookPages, bookCover, haveRead, bookRating);
+  if(isEditing === false){
+    addBookToLibrary(bookTitle, bookAuthor, bookPages, bookCover, haveRead, bookRating);
+  }
+  else if(isEditing === true){
+    //Update table to new values
+    editingBook.title = bookTitle;
+    editingBook.author = bookAuthor;
+    editingBook.pages = bookPages;
+    editingBook.cover = bookCover;
+    editingBook.haveRead = haveRead;
+    editingBook.rating = bookRating;
+    isEditing = false;
+    //Update div to reflect new values
+    updateEditBookDiv();
+  }
   console.table(allBooks);
 
   bookDialog.close();
 
   form.reset(); //clear form inputs
+}
+function updateEditBookDiv(){
+  editBookEvent.target.parentElement.querySelector(".book-title").textContent = editingBook.title;
+  editBookEvent.target.parentElement.querySelector(".book-author").textContent = editingBook.author;
+  editBookEvent.target.parentElement.querySelector(".book-cover").src = editingBook.cover;
+  editBookEvent.target.parentElement.querySelector(".book-pages").textContent = editingBook.pages;
+  editBookEvent.target.parentElement.querySelector(".book-pages").textContent = editingBook.pages;
+
+  //update is read checkbox and class list to style
+  editBookEvent.target.parentElement.querySelector(".isRead-checkbox").checked = editingBook.haveRead;
+  editBookEvent.target.parentElement.querySelector(".isRead-checkbox").classList.add(
+     (editingBook.haveRead === true) ? "is-read": "not-read");
+  editBookEvent.target.parentElement.querySelector(".isRead-checkbox").classList.remove(
+     (editingBook.haveRead === false) ? "is-read": "not-read");
+  editBookEvent.target.parentElement.querySelectorAll(".rating-radio")[editingBook.rating - 1].checked = true;
+  console.log(editBookEvent.target.parentElement.querySelectorAll(".rating-radio")[editingBook.rating - 1].checked);
+  //Update the star rating
 }
 //to update allBook array when read status changes
 function updateIsRead(event){
@@ -248,6 +335,10 @@ function updateRating(event){
 
 
 addBookButton.addEventListener("click", () => {
+  //Also change "edit book" to "new book"
+  formTitle.textContent = "New Book"
+  //Also change "submit changes" to "submit book"
+  submitButton.textContent = "Submit Book"
   bookDialog.showModal();
 });
 closeButton.addEventListener("click", () => {

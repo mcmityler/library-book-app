@@ -27,9 +27,5 @@ Mauricio Allende checkbox : https://codepen.io/mallendeo/details/QWKrEL
 
 Tutorial followed for inputs: https://www.youtube.com/watch?v=9wO594NXw34&list=PLjYwlnQbXANvVJUgAJ-plXsUDFYwv5-BW 
 
-
-TO DO:
-
-1) Asterisk to required input fields
-2) Make read green darker in new book page
-3) way to edit already existing books
+Eventual Future Ideas: 
+1) way to edit books that are on shelf
