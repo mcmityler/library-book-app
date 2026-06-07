@@ -2,8 +2,8 @@
 In this application I am using what I have learned about [[Prototype]]'s and prototypal inheritance
 
 Also took this project further to teach myself some more styling and also some new 
-JavaScript, such as a refresher of how to make new HTML elements and got familiar
-with already learned techniques
+JavaScript, such as a refresher of how to make new HTML elements and the Dialog element
+and got familiar with already learned techniques
 
 Sources:
 
