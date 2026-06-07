@@ -43,9 +43,9 @@
                         <label for="cover-input" class="hover-pointer" >Cover Image (URL):</label>
                         <input type="url" name="cover-input" id="cover-input" placeholder="https://..."/>
                     </div>
-                    <div class="isRead-container">
-                        <label for="read-input" class="hover-pointer">Has been read:</label>
-                        <input type="checkbox hover-pointer" name="read-input" id="read-input" />
+                    <div class="submit-checkbox">
+                        <input class="tgl tgl-flip" id="cb5" type="checkbox" name="read-input" id="read-input"/>
+                        <label class="tgl-btn" data-tg-off="Not Read" data-tg-on="Read" for="cb5"></label>
                     </div>
                     <div class="rating-input-container">
                         <input type="radio" name="rating" id="star-1" class="rating-radio" value="1" checked>
@@ -64,6 +64,7 @@
                         <label for="star-5"><i class="fa-solid fa-star"></i></label>
                     </div>
                     <button class="submit-book-button hover-pointer">Submit book</button>
+                    
                 </form>
                 <button class="close-dialog-button hover-pointer" aria-label="Close"><i class="fa-solid fa-x"></i></button>
             </div>

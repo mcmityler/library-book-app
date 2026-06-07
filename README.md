@@ -19,3 +19,5 @@ Trash can effect source: https://codepen.io/parveenkaushik/pen/vNLMQK/
 Font: https://fonts.google.com/specimen/Raleway
 
 Color Palette: https://colorhunt.co/palette/f5f5f576abae303841ff5722
+
+Mauricio Allende checkbox : https://codepen.io/mallendeo/details/QWKrEL 
