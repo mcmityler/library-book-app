@@ -1,6 +1,9 @@
 # library-book-app
 In this application I am using what I have learned about [[Prototype]]'s and prototypal inheritance
 
+Also took this project further to teach myself some more styling and also some new 
+JavaScript, such as a refresher of how to make new HTML elements and got familiar
+with already learned techniques
 
 Sources:
 
@@ -21,3 +24,5 @@ Font: https://fonts.google.com/specimen/Raleway
 Color Palette: https://colorhunt.co/palette/f5f5f576abae303841ff5722
 
 Mauricio Allende checkbox : https://codepen.io/mallendeo/details/QWKrEL 
+
+Tutorial followed for inputs: https://www.youtube.com/watch?v=9wO594NXw34&list=PLjYwlnQbXANvVJUgAJ-plXsUDFYwv5-BW 
