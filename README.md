@@ -28,4 +28,4 @@ Mauricio Allende checkbox : https://codepen.io/mallendeo/details/QWKrEL
 Tutorial followed for inputs: https://www.youtube.com/watch?v=9wO594NXw34&list=PLjYwlnQbXANvVJUgAJ-plXsUDFYwv5-BW 
 
 Eventual Future Ideas: 
-1) way to edit books that are on shelf
+1) Confirm delete prompt from deleting div's

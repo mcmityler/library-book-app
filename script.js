@@ -135,7 +135,7 @@ function AddNewBookDiv(newBook){
 
   const editButton = document.createElement("button");
   editButton.textContent = "edit";
-  editButton.classList.add(`edit_${newBook.bookId}`, "edit-button");
+  editButton.classList.add("edit-button", "hover-pointer");
   editButton.addEventListener("click", (event) => {
     editBook(event);
   })
@@ -267,10 +267,9 @@ function submitNewBook(event){
 }
 function updateEditBookDiv(){
   editBookEvent.target.parentElement.querySelector(".book-title").textContent = editingBook.title;
-  editBookEvent.target.parentElement.querySelector(".book-author").textContent = editingBook.author;
+  editBookEvent.target.parentElement.querySelector(".book-author").textContent = `by: ${editingBook.author}`;
   editBookEvent.target.parentElement.querySelector(".book-cover").src = editingBook.cover;
-  editBookEvent.target.parentElement.querySelector(".book-pages").textContent = editingBook.pages;
-  editBookEvent.target.parentElement.querySelector(".book-pages").textContent = editingBook.pages;
+  editBookEvent.target.parentElement.querySelector(".book-pages").textContent =`Pages: ${editingBook.pages}`;
 
   //update is read checkbox and class list to style
   editBookEvent.target.parentElement.querySelector(".isRead-checkbox").checked = editingBook.haveRead;
