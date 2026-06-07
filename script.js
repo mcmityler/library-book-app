@@ -134,13 +134,13 @@ function AddNewBookDiv(newBook){
   trashSpan.appendChild(insideIcon);
   deleteButton.appendChild(trashSpan);
  
-  deleteButton.classList.add("delete-button", "span-entire");
+  deleteButton.classList.add("delete-button");
   deleteButton.addEventListener("click", (event) => {
     //target parent of current button being pressed to delete it. 
-    if(event.currentTarget.parentElement.dataset.bookId === `id_${newBook.bookId}`)
+    if(event.currentTarget.parentElement.parentElement.dataset.bookId === `id_${newBook.bookId}`)
     {
-      deleteBookFromLibrary(event.currentTarget.parentElement.dataset.bookId);
-      event.currentTarget.parentElement.remove();
+      deleteBookFromLibrary(event.currentTarget.parentElement.parentElement.dataset.bookId);
+      event.currentTarget.parentElement.parentElement.remove();
     }
   })
   
