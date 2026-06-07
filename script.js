@@ -6,6 +6,15 @@ const closeButton = document.querySelector(".close-dialog-button");
 const submitButton = document.querySelector(".submit-book-button");
 const form = document.querySelector('#new-book-form');
 const formTitle = document.querySelector(".form-title");
+const titleInputfield = form.querySelector("#title-input");
+const authorInputfield = form.querySelector("#author-input");
+const pagesInputfield = form.querySelector("#pages-input");
+const coverInputfield = form.querySelector("#cover-input");
+const haveReadInputfield = form.querySelector("#read-input");
+const starRatingInputfields = form.querySelectorAll(".star-initial");
+let isEditing = false;
+let editingBook = {}; //current book being edited
+let editBookEvent = "";
 
 //Book constructor 
 function Book(title, author, pages, cover, haveRead, rating) {
@@ -111,6 +120,9 @@ function AddNewBookDiv(newBook){
   }
   newBookDiv.appendChild(starRating);
   
+  //section for both delete and edit buttons
+  const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("book-button-container")
   //Create delete button
   const deleteButton = document.createElement("button");
   
@@ -131,7 +143,8 @@ function AddNewBookDiv(newBook){
       event.currentTarget.parentElement.remove();
     }
   })
-  newBookDiv.appendChild(deleteButton);
+  
+  buttonContainer.appendChild(deleteButton);
 
   const editButton = document.createElement("button");
   editButton.textContent = "edit";
@@ -139,7 +152,8 @@ function AddNewBookDiv(newBook){
   editButton.addEventListener("click", (event) => {
     editBook(event);
   })
-  newBookDiv.appendChild(editButton);
+  buttonContainer.appendChild(editButton);
+  newBookDiv.appendChild(buttonContainer);
 
   //add new book to the actual book container html 
   bookContainer.appendChild(newBookDiv);
@@ -163,15 +177,7 @@ function deleteBookFromLibrary(_bookID){
   }
   console.table(allBooks);
 }
-const titleInputfield = form.querySelector("#title-input");
-const authorInputfield = form.querySelector("#author-input");
-const pagesInputfield = form.querySelector("#pages-input");
-const coverInputfield = form.querySelector("#cover-input");
-const haveReadInputfield = form.querySelector("#read-input");
-const starRatingInputfields = form.querySelectorAll(".dialog-star");
-let isEditing = false;
-let editingBook = {}; //current book being edited
-let editBookEvent = "";
+
 //edit an already existing book div
 function editBook(event){
   //get current book object
@@ -203,7 +209,8 @@ function getBookObject(event){
   let index = -1;
   //find index of book you are trying to delete
   for(const _book of allBooks){
-    if(`id_${_book.bookId}` === event.currentTarget.parentElement.dataset.bookId){
+    if((`id_${_book.bookId}` === event.currentTarget.parentElement.dataset.bookId )||
+      ( `id_${_book.bookId}` === event.currentTarget.parentElement.parentElement.dataset.bookId)){
       index = allBooks.indexOf(_book);
       break;
     }
@@ -266,19 +273,19 @@ function submitNewBook(event){
   form.reset(); //clear form inputs
 }
 function updateEditBookDiv(){
-  editBookEvent.target.parentElement.querySelector(".book-title").textContent = editingBook.title;
-  editBookEvent.target.parentElement.querySelector(".book-author").textContent = `by: ${editingBook.author}`;
-  editBookEvent.target.parentElement.querySelector(".book-cover").src = editingBook.cover;
-  editBookEvent.target.parentElement.querySelector(".book-pages").textContent =`Pages: ${editingBook.pages}`;
+  editBookEvent.target.parentElement.parentElement.querySelector(".book-title").textContent = editingBook.title;
+  editBookEvent.target.parentElement.parentElement.querySelector(".book-author").textContent = `by: ${editingBook.author}`;
+  editBookEvent.target.parentElement.parentElement.querySelector(".book-cover").src = editingBook.cover;
+  editBookEvent.target.parentElement.parentElement.querySelector(".book-pages").textContent =`Pages: ${editingBook.pages}`;
 
   //update is read checkbox and class list to style
-  editBookEvent.target.parentElement.querySelector(".isRead-checkbox").checked = editingBook.haveRead;
-  editBookEvent.target.parentElement.querySelector(".isRead-checkbox").classList.add(
+  editBookEvent.target.parentElement.parentElement.querySelector(".isRead-checkbox").checked = editingBook.haveRead;
+  editBookEvent.target.parentElement.parentElement.querySelector(".isRead-checkbox").classList.add(
      (editingBook.haveRead === true) ? "is-read": "not-read");
-  editBookEvent.target.parentElement.querySelector(".isRead-checkbox").classList.remove(
+  editBookEvent.target.parentElement.parentElement.querySelector(".isRead-checkbox").classList.remove(
      (editingBook.haveRead === false) ? "is-read": "not-read");
-  editBookEvent.target.parentElement.querySelectorAll(".rating-radio")[editingBook.rating - 1].checked = true;
-  console.log(editBookEvent.target.parentElement.querySelectorAll(".rating-radio")[editingBook.rating - 1].checked);
+  editBookEvent.target.parentElement.parentElement.querySelectorAll(".rating-radio")[editingBook.rating - 1].checked = true;
+  console.log(editBookEvent.target.parentElement.parentElement.querySelectorAll(".rating-radio")[editingBook.rating - 1].checked);
   //Update the star rating
 }
 //to update allBook array when read status changes
@@ -342,6 +349,7 @@ addBookButton.addEventListener("click", () => {
 });
 closeButton.addEventListener("click", () => {
   form.reset(); //clear form inputs
+  isEditing = false; //make sure to kick out of editing mode
   bookDialog.close();
 });
 

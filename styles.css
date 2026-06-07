@@ -127,7 +127,7 @@ header h1{
     display: grid;
     place-items: center;
     grid-template-rows: 2fr 9fr 1fr 1fr 1fr 2fr 2fr;
-    grid-template-columns: 2fr 3fr 60px;
+    grid-template-columns: 2fr 3fr;
     gap: 10px;
     box-shadow: 5px 5px 12px var(--dark-green);
     border: 5px solid var(--dark-green);
@@ -144,14 +144,20 @@ header h1{
     transform: scale(1.05);
     transition: ease-in 0.2s;
 }
+.book-button-container{
+    display:grid;
+    grid-row: -2/-1;
+    grid-column: 1/-1;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+}
 .edit-button{
-    grid-column: -2/-1;
-    grid-row: 1/2;
     background-color: var(--dark-green);
     border-radius: 5px;
     color: var(--light-color);
-    margin-right: 10px;
-    margin-top: 10px;
+    margin: 5px 0px;
 }
 .edit-button:hover{
     background-color: var(--green);
@@ -162,13 +168,14 @@ header h1{
     width: auto;
     height: 180px;
     box-shadow: 5px 5px 15px var(--dark-green);
+    grid-row: 2/3;
+
 }
 .book-title{
     font-size: 1.4em;
     font-weight: 700;
     color: black;
     align-self: flex-end;
-    grid-row: 1/2;
 }
 .span-entire{
     grid-column: 1 / -1;
@@ -191,23 +198,23 @@ header h1{
 
 /* STAR RATING STYLING */
 .book-div .rating label,
-.rating-input-container label{
+.rating-initial-container label{
     display: inline-block;
     cursor: pointer;
     color: var(--star-normal);
 }
 .book-div .rating  label i,
-.rating-input-container label i{
+.rating-initial-container label i{
     font-size: 2rem;
     transition: 0.1s ease-in;
 }
 .book-div .rating .rating-radio,
-.rating-input-container .rating-radio{
+.rating-initial-container .rating-radio{
     display: none;
 }
 /* when sibling checked  */
-.rating-input-container input[type='radio']:checked + label,
-.rating-input-container label:has(~ input[type='radio']:checked),
+.rating-initial-container input[type='radio']:checked + label,
+.rating-initial-container label:has(~ input[type='radio']:checked),
 .book-div .rating input[type='radio']:checked + label,
 .book-div .rating label:has(~ input[type='radio']:checked){
     color: var(--star-select);
@@ -215,15 +222,15 @@ header h1{
 /* when hovered */
 .book-div .rating label:hover i,
 .book-div .rating label:has(~ label:hover) i,
-.rating-input-container label:hover i,
-.rating-input-container label:has(~ label:hover) i
+.rating-initial-container label:hover i,
+.rating-initial-container label:has(~ label:hover) i
 {
     color: var(--star-hover);
 }
 
 /* When clicked */
 .book-div .rating label:active i,
-.rating-input-container label:active i{
+.rating-initial-container label:active i{
     color: var(--star-click);; 
 
 }
@@ -422,7 +429,7 @@ input[type=checkbox] {
     grid-column: 1/-1;
     place-items: center;
 }
-.rating-input-container, 
+.rating-initial-container, 
 .isRead-container, .form-title{
     justify-self: center;
 }
