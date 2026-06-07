@@ -27,21 +27,21 @@
             <div class="dialog-container">
                 <h2 class="form-title">New Book</h2>
                 <form id="new-book-form">
-                    <div class="title-container">
-                        <label for="title-input" class="hover-pointer">Title:</label>
-                        <input type="text" name="title-input" id="title-input" required maxlength="26"/>
+                    <div class="title-container input-container">
+                        <input type="text" name="title-input" id="title-input" placeholder="" maxlength="26"/>
+                        <label for="title-input" class="hover-pointer">Title</label>
                     </div>
-                    <div class="author-container">
-                        <label for="author-input" class="hover-pointer" >Author:</label>
-                        <input type="text" name="author-input" id="author-input" required maxlength="26"/>
+                    <div class="author-container input-container">
+                        <input type="text" name="author-input" id="author-input" placeholder="" required maxlength="26"/>
+                        <label for="author-input" class="hover-pointer" >Author</label>
                     </div>
-                    <div class="pages-container">
-                        <label for="pages-input" class="hover-pointer">Page Count:</label>
-                        <input type="number" name="pages-input" id="pages-input" max="99999" required />
+                    <div class="pages-container input-container">
+                        <input type="number" name="pages-input" id="pages-input" max="99999" placeholder="" required />
+                        <label for="pages-input" class="hover-pointer">Page Count</label>
                     </div>
-                    <div class="cover-container">
-                        <label for="cover-input" class="hover-pointer" >Cover Image (URL):</label>
-                        <input type="url" name="cover-input" id="cover-input" placeholder="https://..."/>
+                    <div class="cover-container input-container">
+                        <input type="url" name="cover-input" placeholder="" id="cover-input"/>
+                        <label for="cover-input" class="hover-pointer" >Cover Image (ie: https://...)</label>
                     </div>
                     <div class="submit-checkbox">
                         <input class="tgl tgl-flip" id="cb5" type="checkbox" name="read-input" id="read-input"/>
