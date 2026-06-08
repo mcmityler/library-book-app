@@ -139,8 +139,11 @@ function AddNewBookDiv(newBook){
     //target parent of current button being pressed to delete it. 
     if(event.currentTarget.parentElement.parentElement.dataset.bookId === `id_${newBook.bookId}`)
     {
-      deleteBookFromLibrary(event.currentTarget.parentElement.parentElement.dataset.bookId);
+      deleteBookFromLibrary(event);
       event.currentTarget.parentElement.parentElement.remove();
+    }
+    else{
+      console.log("cant find "+ newBook.bookId)
     }
   })
   
@@ -160,15 +163,8 @@ function AddNewBookDiv(newBook){
 }
 
 //used to clean up the library when you delete a book from it
-function deleteBookFromLibrary(_bookID){
-  let index = -1;
-  //find index of book you are trying to delete
-  for(const _book of allBooks){
-    if(_book.bookId === _bookID){
-      index = allBooks.indexOf(_book);
-      break;
-    }
-  }
+function deleteBookFromLibrary(event){
+  const index = allBooks.indexOf(getBookObject(event));
   if (index > -1) { 
       allBooks.splice(index, 1); //remove
   }
@@ -291,16 +287,9 @@ function updateEditBookDiv(){
 //to update allBook array when read status changes
 function updateIsRead(event){
   
-  let index = -1;
-  //find index of book you are trying to delete
-  for(const _book of allBooks){
-    if(event.currentTarget.parentElement.dataset.bookId === `id_${_book.bookId}`){
-      index = allBooks.indexOf(_book);
-      break;
-    }
-  }
-  if (index > -1) { 
-      allBooks[index].haveRead = event.currentTarget.checked;
+  let _book = getBookObject(event);
+  if (_book != null) { 
+      _book.haveRead = event.currentTarget.checked;
       if (event.currentTarget.checked){
         event.currentTarget.classList.add("is-read");
         event.currentTarget.classList.remove("not-read");
@@ -322,16 +311,10 @@ function updateIsRead(event){
 
 //to update allBook array when rating changes
 function updateRating(event){
-  let index = -1;
-  //find index of book you are trying to delete
-  for(const _book of allBooks){
-    if(event.currentTarget.parentElement.parentElement.dataset.bookId === `id_${_book.bookId}`){
-      index = allBooks.indexOf(_book);
-      break;
-    }
-  }
-  if (index > -1) { 
-      allBooks[index].rating = +event.currentTarget.value;
+  let _book = getBookObject(event);
+  
+  if (_book !== null) { 
+      _book.rating = +event.currentTarget.value;
   }
   else{
     console.log(`Book id: ${event.currentTarget.parentElement.parentElement.dataset.bookId} could not be found`);
