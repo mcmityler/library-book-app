@@ -1,26 +1,19 @@
 :root{
     /* used for the dialog backdrop */
-    --lightest-purple: #F4eeff;
+    --light-color: #F5F5F5;
     --purple: #dcd6f7;
     --dark-purple: #a6b1e1;
-    --dark-color: #424874;
 
-    --light-color: #F5F5F5;
     --light-green: #84bdc0 ;
     --green: #3f797c ;
     --dark-green: #1c2e30 ;
+    
     --orange: #FF5722 ;
 
     --star-normal: #d4d3cc;
     --star-select: #ffea4e;
     --star-hover: #999154;
-    --star-click: #413e2b;
-
-    
-    
-}
-*{
-    /* outline: 1px solid red; */
+    --star-click: #413e2b; 
 }
 
 @font-face {
@@ -42,7 +35,7 @@ body{
     min-height: 100%;
 }
 
-/* PAGE HEADER */
+/* --------------------- PAGE HEADER ---------------------------*/
 header{
     display: grid;
     gap: 20px;
@@ -57,15 +50,12 @@ header h1{
     margin-top: 30px;
 }
 
-
-/* ADD BOOK BUTTON FANCY */
-
+/* ADD BOOK BUTTON -- FANCY */
 .add-button-container{
     position: relative;
     margin: auto;
     width: 50px;
     height: 50px;
-    /* background-color: blue; */
 }
 .add-book-button{
     width: 50px;
@@ -78,14 +68,12 @@ header h1{
     position: absolute;
     top: 20px;
     left: 0;
-}
-
+} 
 .add-book-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
-
 .add-book-button:active {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -110,7 +98,7 @@ header h1{
 }
 
 
-/* Book DIV Styling */
+/* --------------------- BOOKSHELF . BOOK DIV ---------------------------*/
 .book-shelf{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); 
@@ -132,15 +120,14 @@ header h1{
     box-shadow: 5px 5px 12px var(--dark-green);
     border: 5px solid var(--dark-green);
     transform: scale(1);
-
     transition: ease-out 0.2s;
     overflow: hidden;
+    font-size: 1.2em;
 
 }
 .book-div:hover{
     border: 5px solid var(--orange);
     box-shadow: 8px 8px 20px black;
-
     transform: scale(1.05);
     transition: ease-in 0.2s;
 }
@@ -151,7 +138,6 @@ header h1{
     grid-auto-flow: column;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-
 }
 .edit-button{
     background-color: var(--dark-green);
@@ -162,14 +148,12 @@ header h1{
 .edit-button:hover{
     background-color: var(--green);
     color: black;
-
 }
 .book-cover{
     width: auto;
     height: 180px;
     box-shadow: 5px 5px 15px var(--dark-green);
     grid-row: 2/3;
-
 }
 .book-title{
     font-size: 1.4em;
@@ -186,17 +170,12 @@ header h1{
 }
 .isRead-label{
     grid-column: 2 /3;
+    font-size: 0.8em;
     justify-self: flex-start;
-
-
-}
-.book-author, .book-pages{
-    font-size: 1.2em;
 }
 
 
-
-/* STAR RATING STYLING */
+/* --------------------- STAR RATING SYSTEM STYLING ---------------------------*/
 .book-div .rating label,
 .rating-initial-container label{
     display: inline-block;
@@ -459,6 +438,8 @@ input[type=checkbox] {
     color: black;
 
 }
+
+/* USED on things you want a pointer cursor for */
 .hover-pointer:hover{
     cursor: pointer;
 }
