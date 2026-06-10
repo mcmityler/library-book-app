@@ -101,7 +101,7 @@ header h1{
 /* --------------------- BOOKSHELF . BOOK DIV ---------------------------*/
 .book-shelf{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr)); 
     grid-template-rows: 450px;
     grid-auto-flow: row;
     grid-auto-rows: 450px;
