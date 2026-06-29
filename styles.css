@@ -392,7 +392,8 @@ input[type="checkbox"] {
 }
 #new-book-form {
   display: grid;
-  gap: 20px;
+  grid-template-rows: 60px 60px 60px 60px 35px 40px 35px;
+  gap: 10px;
   grid-column: 1/-1;
   place-items: center;
 }
@@ -420,6 +421,7 @@ input[type="checkbox"] {
 .submit-book-button {
   background-color: var(--dark-green);
   color: var(--light-color);
+  grid-row: -2/-1;
 }
 .submit-book-button:hover {
   background-color: var(--green);
@@ -432,6 +434,7 @@ input[type="checkbox"] {
 }
 
 /* FANCY CHECKBOX*/
+
 .submit-checkbox .tgl {
   display: none;
 }
@@ -509,6 +512,13 @@ input[type="checkbox"] {
 }
 .submit-checkbox .tgl-flip:checked + .tgl-btn:active:after {
   transform: rotateY(20deg);
+}
+
+.submit-checkbox:not(:checked) + .rating-initial-container {
+  display: none;
+}
+.submit-checkbox:has(:checked) + .rating-initial-container {
+  display: block;
 }
 
 /* DIALOG ANIMATION */
