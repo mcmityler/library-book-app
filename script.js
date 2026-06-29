@@ -290,6 +290,7 @@ class BookDisplay {
   static submitNewBook(event) {
     // 1. Prevent the default browser page reload
     event.preventDefault();
+    BookDisplay.formCheck();
 
     // 2. Instantiate FormData by passing the form element
     const formData = new FormData(event.target);
@@ -339,6 +340,21 @@ class BookDisplay {
 
     BookDisplay.form.reset(); //clear form inputs
   }
+  static formCheck() {
+    BookDisplay.titleInputfield.setCustomValidity(""); //disable title error
+    BookDisplay.authorInputfield.setCustomValidity(""); //disable author error
+    BookDisplay.pagesInputfield.setCustomValidity(""); //disable page error
+
+    if (BookDisplay.titleInputfield.validity.valueMissing) {
+      BookDisplay.titleInputfield.setCustomValidity("Enter a Book Title");
+    } else if (BookDisplay.authorInputfield.validity.valueMissing) {
+      BookDisplay.authorInputfield.setCustomValidity("Enter the Book Author");
+    } else if (BookDisplay.pagesInputfield.validity.valueMissing) {
+      BookDisplay.pagesInputfield.setCustomValidity("Enter the page count");
+    } else {
+      console.log("cleared");
+    }
+  }
 }
 
 const myLibrary = new BookLibrary();
@@ -357,6 +373,16 @@ BookDisplay.closeButton.addEventListener("click", () => {
 });
 
 BookDisplay.form.addEventListener("submit", BookDisplay.submitNewBook);
+
+BookDisplay.titleInputfield.addEventListener("input", (event) => {
+  BookDisplay.formCheck();
+});
+BookDisplay.authorInputfield.addEventListener("input", (event) => {
+  BookDisplay.formCheck();
+});
+BookDisplay.pagesInputfield.addEventListener("input", (event) => {
+  BookDisplay.formCheck();
+});
 
 function addInitialBooks() {
   myLibrary.addBookToLibrary(
@@ -403,3 +429,5 @@ function addInitialBooks() {
 }
 
 addInitialBooks();
+
+BookDisplay.formCheck(); //initialize the form check
