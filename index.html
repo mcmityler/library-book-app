@@ -1,84 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library Book</title>
     <!-- below link is used to access icons from font-awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./reset.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./reset.css" />
+  </head>
+  <body>
     <header>
-        <h1>Library of Books</h1>
-        <div class="add-button-container">
-            <button class="add-book-button" aria-label="Add a new book"><i class="fa-solid fa-plus"></i></button>
-        </div>
+      <h1>Library of Books</h1>
+      <div class="add-button-container">
+        <button class="add-book-button" aria-label="Add a new book">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
     </header>
 
     <main>
-        <div class="container">
-            <div class="book-shelf">
-                <!-- Where the book's div's will live -->
-            </div>
+      <div class="container">
+        <div class="book-shelf">
+          <!-- Where the book's div's will live -->
         </div>
-        <dialog id="new-book-dialog">
-            <div class="dialog-container">
-                <h2 class="form-title">New Book</h2>
-                <form id="new-book-form">
-                    <div class="title-container input-container">
-                        <input type="text" name="title-input" id="title-input" placeholder="" maxlength="26"/>
-                        <label for="title-input" class="hover-pointer">Title<span class="asterisk">*</span></label>
-                    </div>
-                    <div class="author-container input-container">
-                        <input type="text" name="author-input" id="author-input" placeholder="" required maxlength="26"/>
-                        <label for="author-input" class="hover-pointer" >Author<span class="asterisk">*</span></label>
-                    </div>
-                    <div class="pages-container input-container">
-                        <input type="number" name="pages-input" id="pages-input" max="99999" placeholder="" required />
-                        <label for="pages-input" class="hover-pointer">Page Count<span class="asterisk">*</span></label>
-                    </div>
-                    <div class="cover-container input-container">
-                        <input type="text" name="cover-input" placeholder="" id="cover-input"/>
-                        <label for="cover-input" class="hover-pointer" >Cover Image (ie: https://...)</label>
-                    </div>
-                    <div class="submit-checkbox">
-                        <input class="tgl tgl-flip" type="checkbox" name="read-input" id="read-input"/>
-                        <label class="tgl-btn" data-tg-off="Not Read" data-tg-on="Read" for="read-input"></label>
-                    </div>
-                    <div class="rating-initial-container">
-                        <input type="radio" name="rating-initial" id="star-1" 
-                        class="rating-radio star-initial" value="1" checked>
-
-                        <label for="star-1"><i class="fa-solid fa-star"></i></label>
-                        
-                        <input type="radio" name="rating-initial" id="star-2"
-                        class="rating-radio star-initial" value="2">
-
-                        <label for="star-2"><i class="fa-solid fa-star"></i></label>
-                        
-                        <input type="radio" name="rating-initial" id="star-3" 
-                        class="rating-radio star-initial" value="3">
-
-                        <label for="star-3"><i class="fa-solid fa-star"></i></label>
-                        
-                        <input type="radio" name="rating-initial" id="star-4" 
-                        class="rating-radio star-initial" value="4">
-
-                        <label for="star-4"><i class="fa-solid fa-star"></i></label>
-                        
-                        <input type="radio" name="rating-initial" id="star-5" 
-                        class="rating-radio star-initial" value="5">
-                        
-                        <label for="star-5"><i class="fa-solid fa-star"></i></label>
-                    </div>
-                    <button class="submit-book-button hover-pointer">Submit book</button>
-                </form>
-                <button class="close-dialog-button hover-pointer" aria-label="Close"><i class="fa-solid fa-x"></i></button>
+      </div>
+      <dialog id="new-book-dialog">
+        <div class="dialog-container">
+          <h2 class="form-title">New Book</h2>
+          <form id="new-book-form">
+            <div class="title-container input-container">
+              <input
+                type="text"
+                name="title-input"
+                id="title-input"
+                placeholder=""
+                maxlength="26"
+                required
+              />
+              <label for="title-input" class="hover-pointer"
+                >Title<span class="asterisk">*</span></label
+              >
             </div>
-        </dialog>
+            <div class="author-container input-container">
+              <input
+                type="text"
+                name="author-input"
+                id="author-input"
+                placeholder=""
+                required
+                maxlength="26"
+              />
+              <label for="author-input" class="hover-pointer"
+                >Author<span class="asterisk">*</span></label
+              >
+            </div>
+            <div class="pages-container input-container">
+              <input
+                type="number"
+                name="pages-input"
+                id="pages-input"
+                max="99999"
+                placeholder=""
+                required
+              />
+              <label for="pages-input" class="hover-pointer"
+                >Page Count<span class="asterisk">*</span></label
+              >
+            </div>
+            <div class="cover-container input-container">
+              <input
+                type="text"
+                name="cover-input"
+                placeholder=""
+                id="cover-input"
+              />
+              <label for="cover-input" class="hover-pointer"
+                >Cover Image (ie: https://...)</label
+              >
+            </div>
+            <div class="submit-checkbox">
+              <input
+                class="tgl tgl-flip"
+                type="checkbox"
+                name="read-input"
+                id="read-input"
+              />
+              <label
+                class="tgl-btn"
+                data-tg-off="Not Read"
+                data-tg-on="Read"
+                for="read-input"
+              ></label>
+            </div>
+            <div class="rating-initial-container">
+              <input
+                type="radio"
+                name="rating-initial"
+                id="star-1"
+                class="rating-radio star-initial"
+                value="1"
+                checked
+              />
+
+              <label for="star-1"><i class="fa-solid fa-star"></i></label>
+
+              <input
+                type="radio"
+                name="rating-initial"
+                id="star-2"
+                class="rating-radio star-initial"
+                value="2"
+              />
+
+              <label for="star-2"><i class="fa-solid fa-star"></i></label>
+
+              <input
+                type="radio"
+                name="rating-initial"
+                id="star-3"
+                class="rating-radio star-initial"
+                value="3"
+              />
+
+              <label for="star-3"><i class="fa-solid fa-star"></i></label>
+
+              <input
+                type="radio"
+                name="rating-initial"
+                id="star-4"
+                class="rating-radio star-initial"
+                value="4"
+              />
+
+              <label for="star-4"><i class="fa-solid fa-star"></i></label>
+
+              <input
+                type="radio"
+                name="rating-initial"
+                id="star-5"
+                class="rating-radio star-initial"
+                value="5"
+              />
+
+              <label for="star-5"><i class="fa-solid fa-star"></i></label>
+            </div>
+            <button class="submit-book-button hover-pointer">
+              Submit book
+            </button>
+          </form>
+          <button class="close-dialog-button hover-pointer" aria-label="Close">
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
+      </dialog>
     </main>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>

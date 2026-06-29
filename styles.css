@@ -1,19 +1,19 @@
-:root{
-    /* used for the dialog backdrop */
-    --light-color: #F5F5F5;
-    --purple: #dcd6f7;
-    --dark-purple: #a6b1e1;
+:root {
+  /* used for the dialog backdrop */
+  --light-color: #f5f5f5;
+  --purple: #dcd6f7;
+  --dark-purple: #a6b1e1;
 
-    --light-green: #84bdc0 ;
-    --green: #3f797c ;
-    --dark-green: #1c2e30 ;
-    
-    --orange: #FF5722 ;
+  --light-green: #84bdc0;
+  --green: #3f797c;
+  --dark-green: #1c2e30;
 
-    --star-normal: #d4d3cc;
-    --star-select: #ffea4e;
-    --star-hover: #999154;
-    --star-click: #413e2b; 
+  --orange: #ff5722;
+
+  --star-normal: #d4d3cc;
+  --star-select: #ffea4e;
+  --star-hover: #999154;
+  --star-click: #413e2b;
 }
 
 @font-face {
@@ -25,508 +25,493 @@
     url("./fonts/Raleway-VariableFont_wght.woff2") format("woff2");
 }
 
-body{
-    min-height: 100vh;
-    background-color: var(--green);
-    font-family:"Raleway-font", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 600;
+body {
+  min-height: 100vh;
+  background-color: var(--green);
+  font-family:
+    "Raleway-font", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 600;
 }
-.container{
-    min-height: 100%;
+.container {
+  min-height: 100%;
 }
 
 /* --------------------- PAGE HEADER ---------------------------*/
-header{
-    display: grid;
-    gap: 20px;
-    background-color: var(--dark-green);
-    color: var(--light-color);
-    box-shadow: 5px 5px 15px black;
-
+header {
+  display: grid;
+  gap: 20px;
+  background-color: var(--dark-green);
+  color: var(--light-color);
+  box-shadow: 5px 5px 15px black;
 }
-header h1{
-    text-align: center;
-    width: 100%;
-    margin-top: 30px;
+header h1 {
+  text-align: center;
+  width: 100%;
+  margin-top: 30px;
 }
 
 /* ADD BOOK BUTTON -- FANCY */
-.add-button-container{
-    position: relative;
-    margin: auto;
-    width: 50px;
-    height: 50px;
+.add-button-container {
+  position: relative;
+  margin: auto;
+  width: 50px;
+  height: 50px;
 }
-.add-book-button{
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    border-radius: 100%;
-    transition: all .2s;
-    background-color: var(--orange);
-    color: var(--light-color);
-    position: absolute;
-    top: 20px;
-    left: 0;
-} 
+.add-book-button {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 100%;
+  transition: all 0.2s;
+  background-color: var(--orange);
+  color: var(--light-color);
+  position: absolute;
+  top: 20px;
+  left: 0;
+}
 .add-book-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 .add-book-button:active {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 .add-book-button::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-    background-color: var(--orange);
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+  background-color: var(--orange);
 }
 
 .add-book-button:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
 }
-
 
 /* --------------------- BOOKSHELF . BOOK DIV ---------------------------*/
-.book-shelf{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr)); 
-    grid-template-rows: 450px;
-    grid-auto-flow: row;
-    grid-auto-rows: 450px;
-    gap: 20px;
-    margin: 40px 20px;
+.book-shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
+  grid-template-rows: 450px;
+  grid-auto-flow: row;
+  grid-auto-rows: 450px;
+  gap: 20px;
+  margin: 40px 20px;
 }
-.book-div{
-    background-color: var(--light-green);
-    color: var(--light-color);
-    border-radius: 25px;
-    display: grid;
-    place-items: center;
-    grid-template-rows: 2fr 9fr 1fr 1fr 1fr 2fr 2fr;
-    grid-template-columns: 2fr 3fr;
-    gap: 10px;
-    box-shadow: 5px 5px 12px var(--dark-green);
-    border: 5px solid var(--dark-green);
-    transform: scale(1);
-    transition: ease-out 0.2s;
-    overflow: hidden;
-    font-size: 1.2em;
-
+.book-div {
+  background-color: var(--light-green);
+  color: var(--light-color);
+  border-radius: 25px;
+  display: grid;
+  place-items: center;
+  grid-template-rows: 2fr 9fr 1fr 1fr 1fr 2fr 2fr;
+  grid-template-columns: 2fr 3fr;
+  gap: 10px;
+  box-shadow: 5px 5px 12px var(--dark-green);
+  border: 5px solid var(--dark-green);
+  transform: scale(1);
+  transition: ease-out 0.2s;
+  overflow: hidden;
+  font-size: 1.2em;
 }
-.book-div:hover{
-    border: 5px solid var(--orange);
-    box-shadow: 8px 8px 20px black;
-    transform: scale(1.05);
-    transition: ease-in 0.2s;
+.book-div:hover {
+  border: 5px solid var(--orange);
+  box-shadow: 8px 8px 20px black;
+  transform: scale(1.05);
+  transition: ease-in 0.2s;
 }
-.book-button-container{
-    display:grid;
-    grid-row: -2/-1;
-    grid-column: 1/-1;
-    grid-auto-flow: column;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+.book-button-container {
+  display: grid;
+  grid-row: -2/-1;
+  grid-column: 1/-1;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
-.edit-button{
-    background-color: var(--dark-green);
-    border-radius: 5px;
-    color: var(--light-color);
-    margin: 5px 0px;
+.edit-button {
+  background-color: var(--dark-green);
+  border-radius: 5px;
+  color: var(--light-color);
+  margin: 5px 0px;
 }
-.edit-button:hover{
-    background-color: var(--green);
-    color: black;
+.edit-button:hover {
+  background-color: var(--green);
+  color: black;
 }
-.book-cover{
-    width: auto;
-    height: 180px;
-    box-shadow: 5px 5px 15px var(--dark-green);
-    grid-row: 2/3;
+.book-cover {
+  width: auto;
+  height: 180px;
+  box-shadow: 5px 5px 15px var(--dark-green);
+  grid-row: 2/3;
 }
-.book-title{
-    font-size: 1.4em;
-    font-weight: 700;
-    color: black;
-    align-self: flex-end;
+.book-title {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: black;
+  align-self: flex-end;
 }
-.span-entire{
-    grid-column: 1 / -1;
+.span-entire {
+  grid-column: 1 / -1;
 }
-.isRead-checkbox{
-    grid-column: 1 / 2;
-    justify-self: flex-end;
+.isRead-checkbox {
+  grid-column: 1 / 2;
+  justify-self: flex-end;
 }
-.isRead-label{
-    grid-column: 2 /3;
-    font-size: 0.8em;
-    justify-self: flex-start;
+.isRead-label {
+  grid-column: 2 /3;
+  font-size: 0.8em;
+  justify-self: flex-start;
 }
-
 
 /* --------------------- STAR RATING SYSTEM STYLING ---------------------------*/
 .book-div .rating label,
-.rating-initial-container label{
-    display: inline-block;
-    cursor: pointer;
-    color: var(--star-normal);
+.rating-initial-container label {
+  display: inline-block;
+  cursor: pointer;
+  color: var(--star-normal);
 }
-.book-div .rating  label i,
-.rating-initial-container label i{
-    font-size: 2rem;
-    transition: 0.1s ease-in;
+.book-div .rating label i,
+.rating-initial-container label i {
+  font-size: 2rem;
+  transition: 0.1s ease-in;
 }
 .book-div .rating .rating-radio,
-.rating-initial-container .rating-radio{
-    display: none;
+.rating-initial-container .rating-radio {
+  display: none;
 }
 /* when sibling checked  */
-.rating-initial-container input[type='radio']:checked + label,
-.rating-initial-container label:has(~ input[type='radio']:checked),
-.book-div .rating input[type='radio']:checked + label,
-.book-div .rating label:has(~ input[type='radio']:checked){
-    color: var(--star-select);
+.rating-initial-container input[type="radio"]:checked + label,
+.rating-initial-container label:has(~ input[type="radio"]:checked),
+.book-div .rating input[type="radio"]:checked + label,
+.book-div .rating label:has(~ input[type="radio"]:checked) {
+  color: var(--star-select);
 }
 /* when hovered */
 .book-div .rating label:hover i,
 .book-div .rating label:has(~ label:hover) i,
 .rating-initial-container label:hover i,
-.rating-initial-container label:has(~ label:hover) i
-{
-    color: var(--star-hover);
+.rating-initial-container label:has(~ label:hover) i {
+  color: var(--star-hover);
 }
 
 /* When clicked */
 .book-div .rating label:active i,
-.rating-initial-container label:active i{
-    color: var(--star-click);; 
-
+.rating-initial-container label:active i {
+  color: var(--star-click);
 }
 
 /* hide stars when book hasn't been read yet */
-.book-div:has(.not-read) .rating{
-    display: none;
+.book-div:has(.not-read) .rating {
+  display: none;
 }
-
-
 
 /* DELETE BUTTON FANCY */
-.delete-button{
-    /* set so that when star rating disappears button doesn't move */
-    grid-row: -2/ -1; 
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-content: center;
-    background-color: transparent;
-    border: none;
+.delete-button {
+  /* set so that when star rating disappears button doesn't move */
+  grid-row: -2/ -1;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-content: center;
+  background-color: transparent;
+  border: none;
 }
 .trash {
-	background:var(--dark-green);
-	width: 66px;
-	height: 80px;
-	display: inline-block;
-	margin:0 auto;
-	
-	position: relative;
-	-webkit-border-bottom-right-radius: 6px;
-	-webkit-border-bottom-left-radius: 6px;
-	-moz-border-radius-bottomright: 6px;
-	-moz-border-radius-bottomleft: 6px;
-	border-bottom-right-radius: 6px;
-	border-bottom-left-radius: 6px;
-    transform: scale(0.3);
-    pointer-events: none;
+  background: var(--dark-green);
+  width: 66px;
+  height: 80px;
+  display: inline-block;
+  margin: 0 auto;
+
+  position: relative;
+  -webkit-border-bottom-right-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  transform: scale(0.3);
+  pointer-events: none;
 }
 .trash span {
-	position: absolute;
-	height: 12px;
-	background: var(--dark-green);
-	top: -19px;
-	left: -10px;
-	right: -10px;
-	
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	transform: rotate(0deg);
-	transition: transform 250ms;
-	transform-origin: 19% 100%;
+  position: absolute;
+  height: 12px;
+  background: var(--dark-green);
+  top: -19px;
+  left: -10px;
+  right: -10px;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transform: rotate(0deg);
+  transition: transform 250ms;
+  transform-origin: 19% 100%;
 }
 .trash span:after {
-	content: '';
-	position: absolute;
-	width: 27px;
-	height: 7px;
-	background: var(--dark-green);
-	top: -10px;
-	
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	transform: rotate(0deg);
-	transition: transform 250ms;
-	transform-origin: 19% 100%;
-	left: 27px;
-}
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 7px;
+  background: var(--dark-green);
+  top: -10px;
 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transform: rotate(0deg);
+  transition: transform 250ms;
+  transform-origin: 19% 100%;
+  left: 27px;
+}
 
 .trash i {
-	position:relative;
-	width: 5px;
-	height:50px;
-	background:var(--light-green);
-	display:block;
-	margin:14px auto;
-	border-radius: 5px;
+  position: relative;
+  width: 5px;
+  height: 50px;
+  background: var(--light-green);
+  display: block;
+  margin: 14px auto;
+  border-radius: 5px;
 }
 .trash i:after {
-	content: '';
-	width: 5px;
-	height: 50px;
-	background: var(--light-green);
-	position: absolute;
-	left: -18px;
-	border-radius: 5px;
+  content: "";
+  width: 5px;
+  height: 50px;
+  background: var(--light-green);
+  position: absolute;
+  left: -18px;
+  border-radius: 5px;
 }
 .trash i:before {
-	content: '';
-	width: 5px;
-	height: 50px;
-	background: var(--light-green);
-	position: absolute;
-	right: -18px;
-	border-radius: 5px;
+  content: "";
+  width: 5px;
+  height: 50px;
+  background: var(--light-green);
+  position: absolute;
+  right: -18px;
+  border-radius: 5px;
 }
 
 .delete-button:hover .trash span {
-	transform: rotate(-45deg);
-	transition: transform 250ms;
+  transform: rotate(-45deg);
+  transition: transform 250ms;
 }
 .delete-button:hover .trash,
 .delete-button:hover .trash span::after,
 .delete-button:hover .trash span {
-    background: var(--orange);
-    cursor: pointer;
-
+  background: var(--orange);
+  cursor: pointer;
 }
-
 
 /* fancy checkbox */
 .checkbox-input {
-    appearance: none;
-    background-color: var(--light-color);
-    border-radius: 72px;
-    border-style: none;
-    flex-shrink: 0;
-    height: 20px;
-    margin: 0;
-    position: relative;
-    width: 30px;
+  appearance: none;
+  background-color: var(--light-color);
+  border-radius: 72px;
+  border-style: none;
+  flex-shrink: 0;
+  height: 20px;
+  margin: 0;
+  position: relative;
+  width: 30px;
 }
 
 .checkbox-input::before {
-    bottom: -6px;
-    content: "";
-    left: -6px;
-    position: absolute;
-    right: -6px;
-    top: -6px;
+  bottom: -6px;
+  content: "";
+  left: -6px;
+  position: absolute;
+  right: -6px;
+  top: -6px;
 }
 
 .checkbox-input,
 .checkbox-input::after {
-    transition: all 100ms ease-out;
+  transition: all 100ms ease-out;
 }
 
 .checkbox-input::after {
-    background-color: var(--dark-purple);
-    border-radius: 50%;
-    content: "";
-    height: 14px;
-    left: 3px;
-    position: absolute;
-    top: 3px;
-    width: 14px;
+  background-color: var(--dark-purple);
+  border-radius: 50%;
+  content: "";
+  height: 14px;
+  left: 3px;
+  position: absolute;
+  top: 3px;
+  width: 14px;
 }
-input[type=checkbox] {
-    cursor: default;
+input[type="checkbox"] {
+  cursor: default;
 }
 
 .checkbox-input:hover {
-    background-color: var(--orange);
-    transition-duration: 0s;
-    cursor: pointer;
-
+  background-color: var(--orange);
+  transition-duration: 0s;
+  cursor: pointer;
 }
-.isRead-label:hover{
-    cursor: pointer;
+.isRead-label:hover {
+  cursor: pointer;
 }
 
 .checkbox-input:checked {
-    background-color: var(--green);
+  background-color: var(--green);
 }
 
 .checkbox-input:checked::after {
-    background-color: var(--dark-purple);;
-    left: 13px;
+  background-color: var(--dark-purple);
+  left: 13px;
 }
 
 :focus:not(.focus-visible) {
-    outline: 0;
+  outline: 0;
 }
 
 .checkbox-input:checked:hover {
-    background-color: var(--dark-green);
+  background-color: var(--dark-green);
 }
-
 
 /* DIALOG STYLING */
 
-#new-book-dialog{
-   
-    background-color: var(--light-green);
-    border: 5px solid var(--dark-green);
-    border-radius: 20px;
+#new-book-dialog {
+  background-color: var(--light-green);
+  border: 5px solid var(--dark-green);
+  border-radius: 20px;
 }
-.dialog-container{
-    display: grid;
-    grid-template-columns: 1fr 40px;
-    row-gap: 10px;
+.dialog-container {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  row-gap: 10px;
 }
-#new-book-form{
-    display: grid;
-    gap: 20px;
-    grid-column: 1/-1;
-    place-items: center;
+#new-book-form {
+  display: grid;
+  gap: 20px;
+  grid-column: 1/-1;
+  place-items: center;
 }
-.rating-initial-container, 
-.isRead-container, .form-title{
-    justify-self: center;
+.rating-initial-container,
+.isRead-container,
+.form-title {
+  justify-self: center;
 }
-.form-title{
-    grid-row: 1/2;
-    grid-column: 1/-1;
+.form-title {
+  grid-row: 1/2;
+  grid-column: 1/-1;
 }
-.close-dialog-button{
-    grid-row: 1/2;
-    grid-column: -2/-1;
-    background-color: var(--orange);
-    border-radius: 10px;
+.close-dialog-button {
+  grid-row: 1/2;
+  grid-column: -2/-1;
+  background-color: var(--orange);
+  border-radius: 10px;
 }
-.close-dialog-button:hover i{
-    color: var(--light-color);
+.close-dialog-button:hover i {
+  color: var(--light-color);
 }
-.close-dialog-button i{
-    color: var(--dark-green);
+.close-dialog-button i {
+  color: var(--dark-green);
 }
-.submit-book-button{
-    background-color: var(--dark-green);
-    color: var(--light-color);
+.submit-book-button {
+  background-color: var(--dark-green);
+  color: var(--light-color);
 }
-.submit-book-button:hover{
-    background-color: var(--green);
-    color: black;
-
+.submit-book-button:hover {
+  background-color: var(--green);
+  color: black;
 }
 
 /* USED on things you want a pointer cursor for */
-.hover-pointer:hover{
-    cursor: pointer;
+.hover-pointer:hover {
+  cursor: pointer;
 }
-
 
 /* FANCY CHECKBOX*/
 .submit-checkbox .tgl {
-    display: none;
+  display: none;
 }
 .submit-checkbox .tgl + .tgl-btn {
-    outline: 0;
-    display: block;
-    width: 6em;
-    height: 2em;
-    position: relative;
-    cursor: pointer;
-    -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+  outline: 0;
+  display: block;
+  width: 6em;
+  height: 2em;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .submit-checkbox .tgl + .tgl-btn:after,
 .submit-checkbox .tgl + .tgl-btn:before {
-    position: relative;
-    display: block;
-    content: "";
-    width: 50%;
-    height: 100%;
+  position: relative;
+  display: block;
+  content: "";
+  width: 50%;
+  height: 100%;
 }
 .submit-checkbox .tgl + .tgl-btn:after {
-    left: 0;
+  left: 0;
 }
 .submit-checkbox .tgl + .tgl-btn:before {
-    display: none;
+  display: none;
 }
 .submit-checkbox .tgl:checked + .tgl-btn:after {
-    left: 50%;
+  left: 50%;
 }
 .submit-checkbox .tgl-flip + .tgl-btn {
-    padding: 2px;
-    transition: all 0.2s ease;
-    font-family: sans-serif;
-    perspective: 100px;
+  padding: 2px;
+  transition: all 0.2s ease;
+  font-family: sans-serif;
+  perspective: 100px;
 }
 .submit-checkbox .tgl-flip + .tgl-btn:after,
 .submit-checkbox .tgl-flip + .tgl-btn:before {
-    display: inline-block;
-    transition: all 0.4s ease;
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    line-height: 2em;
-    font-weight: bold;
-    color: #fff;
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-    border-radius: 4px;
+  display: inline-block;
+  transition: all 0.4s ease;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  line-height: 2em;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 4px;
 }
 .submit-checkbox .tgl-flip + .tgl-btn:after {
-    content: attr(data-tg-on);
-    background: var(--green);
-    transform: rotateY(-180deg);
+  content: attr(data-tg-on);
+  background: var(--green);
+  transform: rotateY(-180deg);
 }
 .submit-checkbox .tgl-flip + .tgl-btn:before {
-    background: var(--orange);
-    content: attr(data-tg-off);
+  background: var(--orange);
+  content: attr(data-tg-off);
 }
 .submit-checkbox .tgl-flip + .tgl-btn:active:before {
-    transform: rotateY(-20deg);
+  transform: rotateY(-20deg);
 }
 .submit-checkbox .tgl-flip:checked + .tgl-btn:before {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 .submit-checkbox .tgl-flip:checked + .tgl-btn:after {
-    transform: rotateY(0);
-    left: 0;
-    background: var(--green);
+  transform: rotateY(0);
+  left: 0;
+  background: var(--green);
 }
 .submit-checkbox .tgl-flip:checked + .tgl-btn:active:after {
-    transform: rotateY(20deg);
+  transform: rotateY(20deg);
 }
 
-
-  /* DIALOG ANIMATION */
+/* DIALOG ANIMATION */
 dialog:open {
   opacity: 1;
   transform: scaleY(1);
@@ -558,7 +543,7 @@ dialog {
 /* Transition the :backdrop when the dialog modal is promoted to the top layer */
 dialog::backdrop {
   background-color: transparent;
-    opacity: 0;
+  opacity: 0;
 
   transition:
     display 0.5s allow-discrete,
@@ -566,12 +551,11 @@ dialog::backdrop {
     opacity 0.5s;
   /* Equivalent to
   transition: all 0.7s allow-discrete; */
-
 }
 
 dialog:open::backdrop {
   /* background-color: rgb(0 0 0 / 25%); */
-    background-image: linear-gradient(
+  background-image: linear-gradient(
     45deg,
     var(--green),
     var(--purple),
@@ -591,41 +575,37 @@ because the nesting selector cannot represent pseudo-elements. */
   }
 }
 
-
-
 /* APPLE LIKE INPUT */
-.asterisk{
-    color: var(--orange);
-    font-family: 'Courier New', Courier, monospace;
+.asterisk {
+  color: var(--orange);
+  font-family: "Courier New", Courier, monospace;
 }
-.input-container{
-    width: 400px;
-    position: relative;
+.input-container {
+  width: 400px;
+  position: relative;
 }
-.input-container input{
-    width: 100%;
-    padding: 20px 50px 10px 10px;
-    border-radius: 10px;
-    border: 1px solid black;
-    font-size: 1.1em;
-    outline: none;
-
+.input-container input {
+  width: 100%;
+  padding: 20px 50px 10px 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  font-size: 1.1em;
+  outline: none;
 }
-.input-container label{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    padding: 10px;
-    color: grey;
-    pointer-events: none;
-    transition: all 0.4s ease;
-
+.input-container label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  padding: 10px;
+  color: grey;
+  pointer-events: none;
+  transition: all 0.4s ease;
 }
 /* the second one targets if the input has something different than the placeholder of "" this
     is done so that when there is an input it moves up and works for inputs that aren't required */
 .input-container input:focus ~ label,
-.input-container input:not(:placeholder-shown) ~ label{
-    transform: translateY(-33px);
-    font-size: 0.8em;
+.input-container input:not(:placeholder-shown) ~ label {
+  transform: translateY(-33px);
+  font-size: 0.8em;
 }
